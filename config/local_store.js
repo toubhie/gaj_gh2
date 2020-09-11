@@ -15,7 +15,7 @@ var localStore = {
             logger.log("Recommended Jobs By Qualification Saved!");
 
 
-            // let allJobs = this.getUsersRecommendedJobs(); 
+            // var allJobs = this.getUsersRecommendedJobs(); 
 
             /* if(allJobs.length == 0){
                     logger.log("allJobs is 0")
@@ -31,11 +31,11 @@ var localStore = {
 
     getUsersRecommendedJobsByQualification: function() {
         try {
-            let allJobs = localStorage.getItem(config.tag_job_recommendation_by_qualification);
+            var allJobs = localStorage.getItem(config.tag_job_recommendation_by_qualification);
 
             logger.log("allJobs - " + allJobs);
 
-            //let allJobsArray = helpers.parseJSONToArray(allJobs);
+            //var allJobsArray = helpers.parseJSONToArray(allJobs);
 
 
             //logger.log("allJobs - " + allJobs.length)

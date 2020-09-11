@@ -26,6 +26,8 @@ router.use(session({
 
 router.post('/add-summary', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var userData = req.session.passport.user;
         var user_id = userData.user_id;
         var summary = req.body.summary;
@@ -51,6 +53,8 @@ router.post('/add-summary', function(req, res) {
 
 router.post("/add-resume", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var resume = new Resume(req.body.user_id);
 
@@ -74,6 +78,8 @@ router.post("/add-resume", (req, res, next) => {
 // Education
 router.post("/all-education", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllEducationByResumeIdQuery(resume_id), (err, data) => {
@@ -91,6 +97,8 @@ router.post("/all-education", (req, res, next) => {
 
 router.post("/add-education/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var name_of_institution = req.body.name_of_institution;
         var qualification = req.body.qualification;
@@ -127,6 +135,8 @@ router.post("/add-education/:resumeId", (req, res, next) => {
 
 router.post("/update-education/:educationId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var education_id = req.params.educationId;
 
         var name_of_institution = req.body.name_of_institution;
@@ -159,6 +169,8 @@ router.post("/update-education/:educationId", (req, res, next) => {
 
 router.post('/save-candidate-education', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var name_of_institution = helpers.checkifUndefined(req.body.name_of_institution);
         var qualification = helpers.checkifUndefined(req.body.qualification);
         var course_of_study = helpers.checkifUndefined(req.body.course_of_study);
@@ -207,8 +219,10 @@ router.post('/save-candidate-education', function(req, res, next) {
     }
 });
 
-router.post('/devare-candidate-education', function(req, res, next) {
+router.post('/delete-candidate-education', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var education_id = req.body.education_id;
         var name_of_institution = req.body.name_of_institution;
 
@@ -216,18 +230,18 @@ router.post('/devare-candidate-education', function(req, res, next) {
         var user = req.session.passport.user;
 
         var resume = new Resume();
-        db.query(resume.devareEducationQuery(education_id), (err, data) => {
+        db.query(resume.deleteEducationQuery(education_id), (err, data) => {
             if (!err) {
                 if (data) {
-                    //Education has been devared
+                    //Education has been deleted
                     //Get all resume info again
                     resume.getAllUserResumeInformation(user.user_id);
 
-                    helpers.saveActivityTrail(user.user_id, "Education Devared", "You devared an education with " +
+                    helpers.saveActivityTrail(user.user_id, "Education Deleted", "You deleted an education with " +
                         name_of_institution + " from your resume.");
 
                     res.status(200).json({
-                        message: "Education devared."
+                        message: "Education deleted."
                     });
                 }
             }
@@ -239,6 +253,8 @@ router.post('/devare-candidate-education', function(req, res, next) {
 
 router.get("/get-all-qualification", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         db.query(Resume.getAllQualification(), (err, data) => {
             if (!err) {
                 res.status(200).json({
@@ -254,6 +270,8 @@ router.get("/get-all-qualification", (req, res, next) => {
 
 router.post('/edit-candidate-education', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var name_of_institution = helpers.checkifUndefined(req.body.name_of_institution);
         var course_of_study = helpers.checkifUndefined(req.body.course_of_study);
@@ -296,6 +314,8 @@ router.post('/edit-candidate-education', function(req, res, next) {
 // Project
 router.post("/all-projects", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllProjectByResumeIdQuery(resume_id), (err, data) => {
@@ -313,6 +333,8 @@ router.post("/all-projects", (req, res, next) => {
 
 router.post("/add-project/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var project_title = req.body.project_title;
         var project_link = req.body.project_link;
@@ -345,6 +367,8 @@ router.post("/add-project/:resumeId", (req, res, next) => {
 
 router.post("/update-project/:projectId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var project_id = req.params.projectId;
 
         var project_title = req.body.project_title;
@@ -375,6 +399,8 @@ router.post("/update-project/:projectId", (req, res, next) => {
 //Award
 router.post("/all-awards", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllAwardByResumeIdQuery(resume_id), (err, data) => {
@@ -392,6 +418,8 @@ router.post("/all-awards", (req, res, next) => {
 
 router.post("/add-award/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var certificate_name = req.body.certificate_name;
         var offered_by = req.body.offered_by;
@@ -424,6 +452,8 @@ router.post("/add-award/:resumeId", (req, res, next) => {
 
 router.post("/update-award/:awardId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var award_id = req.params.awardId;
 
         var certificate_name = req.body.certificate_name;
@@ -454,6 +484,8 @@ router.post("/update-award/:awardId", (req, res, next) => {
 //Association
 router.post("/all-associations", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllAssociationByResumeIdQuery(resume_id), (err, data) => {
@@ -471,6 +503,8 @@ router.post("/all-associations", (req, res, next) => {
 
 router.post("/add-association/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var title = req.body.title;
         var name = req.body.name;
@@ -502,6 +536,8 @@ router.post("/add-association/:resumeId", (req, res, next) => {
 
 router.post("/update-association/:associationId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var association_id = req.params.associationId;
 
         var title = req.body.title;
@@ -531,6 +567,8 @@ router.post("/update-association/:associationId", (req, res, next) => {
 //Certification
 router.post("/all-certifiactions", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllCertificationByResumeIdQuery(resume_id), (err, data) => {
@@ -548,6 +586,8 @@ router.post("/all-certifiactions", (req, res, next) => {
 
 router.post("/add-certification/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var certification_name = req.body.certification_name;
         var certification_description = req.body.certification_description;
@@ -579,6 +619,8 @@ router.post("/add-certification/:resumeId", (req, res, next) => {
 
 router.post("/update-certification/:certificationId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var certification_id = req.params.certificationId;
 
         var certification_name = req.body.certification_name;
@@ -606,6 +648,8 @@ router.post("/update-certification/:certificationId", (req, res, next) => {
 
 router.post('/save-candidate-certification', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var certification_name = helpers.checkifUndefined(req.body.certification_name);
         var certification_description = helpers.checkifUndefined(req.body.certification_description);
@@ -644,22 +688,24 @@ router.post('/save-candidate-certification', function(req, res, next) {
     }
 });
 
-router.post('/devare-candidate-certification', function(req, res, next) {
+router.post('/delete-candidate-certification', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var certification_id = req.body.certification_id;
 
         //Getting user resume_id
         var user = req.session.passport.user;
 
         var resume = new Resume();
-        db.query(resume.devareCertificationQuery(certification_id), (err, data) => {
+        db.query(resume.deleteCertificationQuery(certification_id), (err, data) => {
             if (!err) {
                 if (data) {
-                    helpers.saveActivityTrail(user.user_id, "Certification Devared",
-                        "You devared a certification from your resume.");
+                    helpers.saveActivityTrail(user.user_id, "Certification Deleted",
+                        "You deleted a certification from your resume.");
 
                     res.status(200).json({
-                        message: "Certification devared."
+                        message: "Certification deleted."
                     });
                 }
             }
@@ -671,6 +717,8 @@ router.post('/devare-candidate-certification', function(req, res, next) {
 
 router.post('/edit-candidate-certification', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var certification_id = helpers.checkifUndefined(req.body.certification_id);
         var certification_name = helpers.checkifUndefined(req.body.certification_name);
@@ -706,6 +754,8 @@ router.post('/edit-candidate-certification', function(req, res, next) {
 //Work Experience
 router.post("/all-experiences", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllWorkExperienceByResumeIdQuery(resume_id), (err, data) => {
@@ -723,6 +773,8 @@ router.post("/all-experiences", (req, res, next) => {
 
 router.post("/add-experience/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var job_title = req.body.job_title;
         var employer_name = req.body.employer_name;
@@ -761,6 +813,8 @@ router.post("/add-experience/:resumeId", (req, res, next) => {
 
 router.post("/update-experience/:experienceId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var experience_id = req.params.experienceId;
 
         var job_title = req.body.job_title;
@@ -795,6 +849,8 @@ router.post("/update-experience/:experienceId", (req, res, next) => {
 
 router.post('/save-candidate-experience', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var company_name = helpers.checkifUndefined(req.body.company_name);
         var job_title = helpers.checkifUndefined(req.body.job_title);
@@ -844,8 +900,10 @@ router.post('/save-candidate-experience', function(req, res, next) {
     }
 });
 
-router.post('/devare-candidate-experience', function(req, res, next) {
+router.post('/delete-candidate-experience', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var experience_id = req.body.experience_id;
         var company_name = req.body.company_name;
 
@@ -853,17 +911,17 @@ router.post('/devare-candidate-experience', function(req, res, next) {
         var user = req.session.passport.user;
 
         var resume = new Resume();
-        db.query(resume.devareWorkExperienceQuery(experience_id), (err, data) => {
+        db.query(resume.deleteWorkExperienceQuery(experience_id), (err, data) => {
             if (!err) {
                 if (data) {
-                    //Experience has been devared
+                    //Experience has been deleted
                     //Get all resume info again
                     //resume.getAllUserResumeInformation(user.user_id);
 
-                    helpers.saveActivityTrail(user.user_id, "Experience Devared", "You devared an experience with " + company_name + " from your resume.");
+                    helpers.saveActivityTrail(user.user_id, "Experience Deleted", "You deleted an experience with " + company_name + " from your resume.");
 
                     res.status(200).json({
-                        message: "Experience devared."
+                        message: "Experience deleted."
                     });
                 }
             }
@@ -875,6 +933,8 @@ router.post('/devare-candidate-experience', function(req, res, next) {
 
 router.post('/edit-candidate-experience', function(req, res, next) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var company_name = helpers.checkifUndefined(req.body.company_name);
         var job_title = helpers.checkifUndefined(req.body.job_title);
@@ -920,6 +980,8 @@ router.post('/edit-candidate-experience', function(req, res, next) {
 //Skill
 router.post("/update-candidate-skills", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var skills = req.body.skills;
         var skills_array = skills.split(',');
@@ -961,6 +1023,8 @@ router.post("/update-candidate-skills", (req, res, next) => {
 //Language
 router.post("/all-languages", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllLanguageByResumeIdQuery(resume_id), (err, data) => {
@@ -978,6 +1042,8 @@ router.post("/all-languages", (req, res, next) => {
 
 router.post("/add-language/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var language = req.body.language;
         var language_level = req.body.language_level;
@@ -1009,6 +1075,8 @@ router.post("/add-language/:resumeId", (req, res, next) => {
 
 router.post("/update-language/:languageId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var language_id = req.params.languageId;
 
         var language = req.body.language;
@@ -1038,6 +1106,8 @@ router.post("/update-language/:languageId", (req, res, next) => {
 //Specialization
 router.post("/all-specializations", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllSpecializationByResumeIdQuery(resume_id), (err, data) => {
@@ -1055,6 +1125,8 @@ router.post("/all-specializations", (req, res, next) => {
 
 router.post("/add-specialization/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var specialization_name = req.body.specialization_name;
         var specialization_description = req.body.specialization_description;
@@ -1086,6 +1158,8 @@ router.post("/add-specialization/:resumeId", (req, res, next) => {
 
 router.post("/update-specialization/:specializationId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var specialization_id = req.params.specializationId;
 
         var specialization_name = req.body.specialization_name;
@@ -1115,6 +1189,8 @@ router.post("/update-specialization/:specializationId", (req, res, next) => {
 //Referee
 router.post("/all-referees", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var resume_id = req.body.resume_id;
 
         db.query(Resume.getAllRefereeByResumeIdQuery(resume_id), (err, data) => {
@@ -1132,6 +1208,8 @@ router.post("/all-referees", (req, res, next) => {
 
 router.post("/add-referee/:resumeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var name = req.body.name;
         var phone_number = req.body.phone_number;
@@ -1167,6 +1245,8 @@ router.post("/add-referee/:resumeId", (req, res, next) => {
 
 router.post("/update-referee/:refereeId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var referee_id = req.params.refereeId;
 
         var name = req.body.name;

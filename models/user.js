@@ -291,8 +291,8 @@ class User {
         return sql;
     }
 
-    static devareUserByIdQuery(user_id) {
-        var sql = `DEvarE FROM user WHERE user_id = ${user_id}`;
+    static deleteUserByIdQuery(user_id) {
+        var sql = `DELETE FROM user WHERE user_id = ${user_id}`;
         return sql;
     }
 
@@ -465,7 +465,7 @@ class User {
     }
 
     removeSavedCandidate(candidate_id, recruiter_user_id) {
-        var sql = `DEvarE FROM saved_resumes WHERE user_id = ${candidate_id} \
+        var sql = `DELETE FROM saved_resumes WHERE user_id = ${candidate_id} \
             AND created_by = ${recruiter_user_id}`;
 
         return sql;

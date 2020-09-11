@@ -1,22 +1,25 @@
-const express = require('express');
-const db = require('../db/database');
-const Payment = require('../models/payment');
-const logger = require('./../config/log4js');
+var express = require('express');
+var db = require('../db/database');
+var Payment = require('../models/payment');
+var logger = require('./../config/log4js');
+var helpers = require('../config/helpers');
 
 const router = express.Router();
 
 router.post("/save-transaction-info", (req, res, next) => {
     try {
-        let transaction_code = req.body.trxref;
-        let amount = req.body.amount;
-        let status = req.body.status;
-        let user_id = req.body.user_id;
-        let payment_plan_id = req.body.payment_plan_id;
+        helpers.checkifAuthenticated(req, res);
 
-        let payment = new Payment();
+        var transaction_code = req.body.trxref;
+        var amount = req.body.amount;
+        var status = req.body.status;
+        var user_id = req.body.user_id;
+        var payment_plan_id = req.body.payment_plan_id;
+
+        var payment = new Payment();
         db.query(payment.getCompanyIdByUserId(user_id), (err, data) => {
             if (!err) {
-                let company_id = data[0].company_id;
+                var company_id = data[0].company_id;
 
                 db.query(payment.savePaymentTransaction(transaction_code, company_id, user_id, payment_plan_id,
                     amount, status), (err, data) => {

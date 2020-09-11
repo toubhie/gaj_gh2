@@ -89,8 +89,8 @@ class Resume {
         return sql;
     }
 
-    devareEducationQuery(education_id) {
-        var sql = `DEvarE FROM education WHERE education_id = ${education_id}`;
+    deleteEducationQuery(education_id) {
+        var sql = `DELETE FROM education WHERE education_id = ${education_id}`;
 
         return sql;
     }
@@ -168,8 +168,8 @@ class Resume {
         return sql;
     }
 
-    devareWorkExperienceQuery(experience_id) {
-        var sql = `DEvarE FROM work_experience WHERE experience_id = ${experience_id}`;
+    deleteWorkExperienceQuery(experience_id) {
+        var sql = `DELETE FROM work_experience WHERE experience_id = ${experience_id}`;
 
         return sql;
     }
@@ -268,8 +268,8 @@ class Resume {
         return sql;
     }
 
-    devareCertificationQuery(certification_id) {
-        var sql = `DEvarE FROM certification WHERE certification_id = ${certification_id}`;
+    deleteCertificationQuery(certification_id) {
+        var sql = `DELETE FROM certification WHERE certification_id = ${certification_id}`;
 
         return sql;
     }
@@ -499,7 +499,7 @@ class Resume {
     }
 
     static removeAllCandidateSkillsByResumeId(resume_id) {
-        var sql = `DEvarE FROM resume_skill WHERE resume_id = ${resume_id}`;
+        var sql = `DELETE FROM resume_skill WHERE resume_id = ${resume_id}`;
 
         return sql;
     }
@@ -515,8 +515,8 @@ class Resume {
         return sql;
     }
 
-    static devareResumeByIdQuery(resume_id) {
-        var sql = `DEvarE FROM resume WHERE resume_id = ${resume_id}`;
+    static deleteResumeByIdQuery(resume_id) {
+        var sql = `DELETE FROM resume WHERE resume_id = ${resume_id}`;
         return sql;
     }
 

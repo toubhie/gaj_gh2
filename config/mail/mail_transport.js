@@ -4,7 +4,7 @@ var logger = require('../log4js');
 exports.sendMail = function(mailOptions) {
     try {
         logger.log('in mailer ' + mailOptions)
-        let transporter = nodeMailer.createTransport({
+        var transporter = nodeMailer.createTransport({
             host: 'smtp.office365.com',
             //port: 465,
             port: 587,
@@ -15,7 +15,7 @@ exports.sendMail = function(mailOptions) {
             }
         });
 
-        /*let mailOptions = {
+        /*var mailOptions = {
           from: '"Jobs from GetaJobGH" <info@getajobgh.com>', // sender address
           to: 'tobiwily@yahoo.com, tobiloba.williams@c-ileasing.com', // list of receivers
           subject: 'Welcome to GetaJobGH ', // Subject line

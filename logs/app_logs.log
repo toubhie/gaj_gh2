@@ -19153,3 +19153,448 @@
 [2020-09-11T16:24:58.322] [INFO] default - Listening on Port: 7011
 [2020-09-11T16:25:20.712] [INFO] default - Listening on Port: 7011
 [2020-09-11T16:29:10.876] [INFO] default - Listening on Port: 7011
+[2020-09-11T16:29:36.358] [INFO] default - Listening on Port: 7011
+[2020-09-11T16:39:37.945] [INFO] default - Listening on Port: 7011
+[2020-09-11T16:40:19.009] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiwily@yahoo.com') AND u.user_id = ur.user_id
+[2020-09-11T16:40:19.685] [INFO] default - SQL: SELECT u.*, ur.role_id, r.resume_id FROM user u, user_role ur, resume r             WHERE u.user_id = 13029 AND u.user_id = ur.user_id             AND u.user_id = r.user_id
+[2020-09-11T16:40:19.688] [INFO] default - This is user id serializwd -----13029
+[2020-09-11T16:40:19.690] [INFO] default - User exist and is redirecting
+[2020-09-11T16:40:19.693] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13029
+[2020-09-11T16:40:19.695] [INFO] default - user_role -1
+[2020-09-11T16:40:19.724] [INFO] default - User is a CANDIDATE. Getting all users info 
+[2020-09-11T16:40:19.811] [INFO] default - SQL: SELECT resume_id FROM resume WHERE user_id = 13029
+[2020-09-11T16:40:19.856] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13029
+[2020-09-11T16:40:19.860] [INFO] default - Resume Info Saved!
+[2020-09-11T16:40:19.867] [INFO] default - resume - 
+[2020-09-11T16:40:19.870] [INFO] default - RowDataPacket {
+  resume_id: 10931,
+  user_id: 13029,
+  percentage_complete: '',
+  resume_file_url: 'Chinenyenwa CV 2020.docx',
+  date_created: 2020-06-23T11:59:05.000Z,
+  date_updated: null,
+  profile_summary: '',
+  willingness_to_travel: '' }
+[2020-09-11T16:40:19.955] [INFO] default - SQL: SELECT * FROM language WHERE language_id IN (SELECT language_id              FROM resume_language WHERE resume_id = 10931)
+[2020-09-11T16:40:20.002] [INFO] default - language - 
+[2020-09-11T16:40:20.006] [INFO] default - []
+[2020-09-11T16:40:20.009] [INFO] default - undefined
+[2020-09-11T16:40:20.011] [INFO] default - Resume Language Saved!
+[2020-09-11T16:40:20.021] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10931)
+[2020-09-11T16:40:20.023] [INFO] default - education - 
+[2020-09-11T16:40:20.025] [INFO] default - []
+[2020-09-11T16:40:20.027] [INFO] default - undefined
+[2020-09-11T16:40:20.029] [INFO] default - Resume Education Saved!
+[2020-09-11T16:40:20.034] [INFO] default - SQL: SELECT * FROM referee WHERE referee_id IN (SELECT referee_id              FROM resume_referee WHERE resume_id = 10931)
+[2020-09-11T16:40:20.036] [INFO] default - referee - 
+[2020-09-11T16:40:20.037] [INFO] default - []
+[2020-09-11T16:40:20.041] [INFO] default - undefined
+[2020-09-11T16:40:20.042] [INFO] default - Resume Referee Saved!
+[2020-09-11T16:40:20.049] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10931)
+[2020-09-11T16:40:20.054] [INFO] default - specialization - 
+[2020-09-11T16:40:20.056] [INFO] default - []
+[2020-09-11T16:40:20.058] [INFO] default - undefined
+[2020-09-11T16:40:20.061] [INFO] default - Resume specialization Saved!
+[2020-09-11T16:40:20.105] [INFO] default - SQL: SELECT * FROM project WHERE project_id IN (SELECT project_id FROM resume_project             WHERE resume_id = 10931)
+[2020-09-11T16:40:20.158] [INFO] default - project - 
+[2020-09-11T16:40:20.161] [INFO] default - []
+[2020-09-11T16:40:20.168] [INFO] default - undefined
+[2020-09-11T16:40:20.172] [INFO] default - Resume Project Saved!
+[2020-09-11T16:40:20.177] [INFO] default - SQL: SELECT * FROM association WHERE association_id IN (SELECT association_id              FROM resume_association WHERE resume_id = 10931)
+[2020-09-11T16:40:20.186] [INFO] default - association - 
+[2020-09-11T16:40:20.189] [INFO] default - []
+[2020-09-11T16:40:20.191] [INFO] default - undefined
+[2020-09-11T16:40:20.193] [INFO] default - Resume association Saved!
+[2020-09-11T16:40:20.197] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10931)
+[2020-09-11T16:40:20.202] [INFO] default - skills - 
+[2020-09-11T16:40:20.205] [INFO] default - []
+[2020-09-11T16:40:20.209] [INFO] default - undefined
+[2020-09-11T16:40:20.215] [INFO] default - Resume Skill Saved!
+[2020-09-11T16:40:20.218] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10931)
+[2020-09-11T16:40:20.220] [INFO] default - certification - 
+[2020-09-11T16:40:20.220] [INFO] default - []
+[2020-09-11T16:40:20.223] [INFO] default - undefined
+[2020-09-11T16:40:20.225] [INFO] default - Resume Certification Saved!
+[2020-09-11T16:40:20.240] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10931)
+[2020-09-11T16:40:20.242] [INFO] default - work_experience - 
+[2020-09-11T16:40:20.246] [INFO] default - [ RowDataPacket {
+    experience_id: 3294,
+    user_id: 13029,
+    job_title: 'Technical Superintendent (Marine)',
+    employer_name: 'Test Company',
+    employer_address: 'Akatsi, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'May, 2007',
+    end_date: 'January, 2020',
+    job_responsibility: 'Test' } ]
+[2020-09-11T16:40:20.252] [INFO] default - undefined
+[2020-09-11T16:40:20.254] [INFO] default - Resume W.E Saved!
+[2020-09-11T16:40:20.259] [INFO] default - SQL: SELECT * FROM award WHERE award_id IN (SELECT award_id              FROM resume_award WHERE resume_id = 10931)
+[2020-09-11T16:40:20.261] [INFO] default - award - 
+[2020-09-11T16:40:20.266] [INFO] default - []
+[2020-09-11T16:40:20.270] [INFO] default - undefined
+[2020-09-11T16:40:20.272] [INFO] default - Resume Award Saved!
+[2020-09-11T16:40:21.241] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13029
+[2020-09-11T16:40:21.248] [INFO] default - resume - 
+[2020-09-11T16:40:21.251] [INFO] default - RowDataPacket {
+  resume_id: 10931,
+  user_id: 13029,
+  percentage_complete: '',
+  resume_file_url: 'Chinenyenwa CV 2020.docx',
+  date_created: 2020-06-23T11:59:05.000Z,
+  date_updated: null,
+  profile_summary: '',
+  willingness_to_travel: '' }
+[2020-09-11T16:40:21.263] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE user_id = 13029
+[2020-09-11T16:40:21.278] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13029                     ORDER BY date_created DESC LIMIT 7
+[2020-09-11T16:40:21.334] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13029) ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T16:40:21.352] [INFO] default - result from qual query is : 0
+[2020-09-11T16:40:21.372] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10931)
+[2020-09-11T16:40:21.390] [INFO] default - education - 
+[2020-09-11T16:40:21.394] [INFO] default - []
+[2020-09-11T16:40:21.415] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_jobs WHERE saved_by = 13029
+[2020-09-11T16:40:21.443] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13029))                 ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T16:40:21.466] [INFO] default - result from gender db is : 
+[2020-09-11T16:40:21.478] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10931)
+[2020-09-11T16:40:21.525] [INFO] default - work_experience - 
+[2020-09-11T16:40:21.541] [INFO] default - [ RowDataPacket {
+    experience_id: 3294,
+    user_id: 13029,
+    job_title: 'Technical Superintendent (Marine)',
+    employer_name: 'Test Company',
+    employer_address: 'Akatsi, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'May, 2007',
+    end_date: 'January, 2020',
+    job_responsibility: 'Test' } ]
+[2020-09-11T16:40:21.553] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13029) ORDER BY j.date_created DESC
+[2020-09-11T16:40:21.562] [INFO] default - result from qual query is : 0
+[2020-09-11T16:40:21.585] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10931)
+[2020-09-11T16:40:21.592] [INFO] default - certification - 
+[2020-09-11T16:40:21.604] [INFO] default - []
+[2020-09-11T16:40:21.679] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13029))                 ORDER BY j.date_created DESC
+[2020-09-11T16:40:21.703] [INFO] default - result from gender db is : 
+[2020-09-11T16:40:21.719] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10931)
+[2020-09-11T16:40:21.725] [INFO] default - specialization - 
+[2020-09-11T16:40:21.752] [INFO] default - []
+[2020-09-11T16:40:21.779] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10931)
+[2020-09-11T16:40:21.799] [INFO] default - skills - 
+[2020-09-11T16:40:21.807] [INFO] default - []
+[2020-09-11T16:40:21.841] [INFO] default - TypeError: User is not a constructor
+    at Object.calculateProfilePercentage (C:/xampp/htdocs/getajobgh/config/helpers.js:177:24)
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:180:65
+    at C:/xampp/htdocs/getajobgh/db/database.js:49:13
+    at Query.<anonymous> (C:/xampp/htdocs/getajobgh/db/database.js:29:32)
+    at Query.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:502:10)
+    at Query._callback (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:468:16)
+    at Query.Sequence.end (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:139:8)
+    at Query.EofPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:123:8)
+    at Protocol._parsePacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+[2020-09-11T16:42:01.760] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:00:32.964] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:36:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+    at session (C:\xampp\htdocs\getajobgh\node_modules\express-session\index.js:182:7)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+[2020-09-11T17:01:36.290] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:01:39.482] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:36:35
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+    at session (C:\xampp\htdocs\getajobgh\node_modules\express-session\index.js:182:7)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+[2020-09-11T17:03:39.568] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:36:35
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+    at session (C:\xampp\htdocs\getajobgh\node_modules\express-session\index.js:182:7)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+[2020-09-11T17:11:02.082] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:11:40.819] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:13:26.988] [INFO] default - user is not authenticated..back to login
+[2020-09-11T17:13:27.001] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:38:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+    at session (C:\xampp\htdocs\getajobgh\node_modules\express-session\index.js:182:7)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+[2020-09-11T17:15:04.177] [INFO] default - user is not authenticated..back to login
+[2020-09-11T17:15:04.189] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:38:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+    at session (C:\xampp\htdocs\getajobgh\node_modules\express-session\index.js:182:7)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+[2020-09-11T17:15:12.065] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiwily@yahoo.com') AND u.user_id = ur.user_id
+[2020-09-11T17:15:12.455] [INFO] default - SQL: SELECT u.*, ur.role_id, r.resume_id FROM user u, user_role ur, resume r             WHERE u.user_id = 13029 AND u.user_id = ur.user_id             AND u.user_id = r.user_id
+[2020-09-11T17:15:12.460] [INFO] default - This is user id serializwd -----13029
+[2020-09-11T17:15:12.462] [INFO] default - User exist and is redirecting
+[2020-09-11T17:15:12.468] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13029
+[2020-09-11T17:15:12.470] [INFO] default - user_role -1
+[2020-09-11T17:15:12.476] [INFO] default - User is a CANDIDATE. Getting all users info 
+[2020-09-11T17:15:12.498] [INFO] default - SQL: SELECT resume_id FROM resume WHERE user_id = 13029
+[2020-09-11T17:15:12.506] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13029
+[2020-09-11T17:15:12.511] [INFO] default - Resume Info Saved!
+[2020-09-11T17:15:12.514] [INFO] default - resume - 
+[2020-09-11T17:15:12.518] [INFO] default - RowDataPacket {
+  resume_id: 10931,
+  user_id: 13029,
+  percentage_complete: '',
+  resume_file_url: 'Chinenyenwa CV 2020.docx',
+  date_created: 2020-06-23T11:59:05.000Z,
+  date_updated: null,
+  profile_summary: '',
+  willingness_to_travel: '' }
+[2020-09-11T17:15:12.541] [INFO] default - user is already authenticated..proceed
+[2020-09-11T17:15:12.589] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10931)
+[2020-09-11T17:15:12.602] [INFO] default - work_experience - 
+[2020-09-11T17:15:12.605] [INFO] default - [ RowDataPacket {
+    experience_id: 3294,
+    user_id: 13029,
+    job_title: 'Technical Superintendent (Marine)',
+    employer_name: 'Test Company',
+    employer_address: 'Akatsi, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'May, 2007',
+    end_date: 'January, 2020',
+    job_responsibility: 'Test' } ]
+[2020-09-11T17:15:12.611] [INFO] default - undefined
+[2020-09-11T17:15:12.625] [INFO] default - Resume W.E Saved!
+[2020-09-11T17:15:12.635] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10931)
+[2020-09-11T17:15:12.647] [INFO] default - education - 
+[2020-09-11T17:15:12.664] [INFO] default - []
+[2020-09-11T17:15:12.709] [INFO] default - undefined
+[2020-09-11T17:15:12.725] [INFO] default - Resume Education Saved!
+[2020-09-11T17:15:12.771] [INFO] default - SQL: SELECT * FROM award WHERE award_id IN (SELECT award_id              FROM resume_award WHERE resume_id = 10931)
+[2020-09-11T17:15:12.785] [INFO] default - award - 
+[2020-09-11T17:15:12.790] [INFO] default - []
+[2020-09-11T17:15:12.795] [INFO] default - undefined
+[2020-09-11T17:15:12.799] [INFO] default - Resume Award Saved!
+[2020-09-11T17:15:12.807] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10931)
+[2020-09-11T17:15:12.812] [INFO] default - skills - 
+[2020-09-11T17:15:12.817] [INFO] default - []
+[2020-09-11T17:15:12.824] [INFO] default - undefined
+[2020-09-11T17:15:12.829] [INFO] default - Resume Skill Saved!
+[2020-09-11T17:15:12.834] [INFO] default - SQL: SELECT * FROM association WHERE association_id IN (SELECT association_id              FROM resume_association WHERE resume_id = 10931)
+[2020-09-11T17:15:12.837] [INFO] default - association - 
+[2020-09-11T17:15:12.844] [INFO] default - []
+[2020-09-11T17:15:12.846] [INFO] default - undefined
+[2020-09-11T17:15:12.849] [INFO] default - Resume association Saved!
+[2020-09-11T17:15:12.852] [INFO] default - SQL: SELECT * FROM language WHERE language_id IN (SELECT language_id              FROM resume_language WHERE resume_id = 10931)
+[2020-09-11T17:15:12.860] [INFO] default - language - 
+[2020-09-11T17:15:12.862] [INFO] default - []
+[2020-09-11T17:15:12.867] [INFO] default - undefined
+[2020-09-11T17:15:12.872] [INFO] default - Resume Language Saved!
+[2020-09-11T17:15:12.878] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10931)
+[2020-09-11T17:15:12.883] [INFO] default - certification - 
+[2020-09-11T17:15:12.886] [INFO] default - []
+[2020-09-11T17:15:12.897] [INFO] default - undefined
+[2020-09-11T17:15:12.900] [INFO] default - Resume Certification Saved!
+[2020-09-11T17:15:12.907] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10931)
+[2020-09-11T17:15:12.911] [INFO] default - specialization - 
+[2020-09-11T17:15:12.914] [INFO] default - []
+[2020-09-11T17:15:12.916] [INFO] default - undefined
+[2020-09-11T17:15:12.921] [INFO] default - Resume specialization Saved!
+[2020-09-11T17:15:12.930] [INFO] default - SQL: SELECT * FROM project WHERE project_id IN (SELECT project_id FROM resume_project             WHERE resume_id = 10931)
+[2020-09-11T17:15:12.933] [INFO] default - project - 
+[2020-09-11T17:15:12.942] [INFO] default - []
+[2020-09-11T17:15:12.945] [INFO] default - undefined
+[2020-09-11T17:15:12.950] [INFO] default - Resume Project Saved!
+[2020-09-11T17:15:12.965] [INFO] default - SQL: SELECT * FROM referee WHERE referee_id IN (SELECT referee_id              FROM resume_referee WHERE resume_id = 10931)
+[2020-09-11T17:15:12.971] [INFO] default - referee - 
+[2020-09-11T17:15:12.977] [INFO] default - []
+[2020-09-11T17:15:12.981] [INFO] default - undefined
+[2020-09-11T17:15:12.986] [INFO] default - Resume Referee Saved!
+[2020-09-11T17:15:13.632] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13029) ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T17:15:13.648] [INFO] default - result from qual query is : 0
+[2020-09-11T17:15:13.667] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13029))                 ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T17:15:13.670] [INFO] default - result from gender db is : 
+[2020-09-11T17:15:13.687] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13029
+[2020-09-11T17:15:13.692] [INFO] default - resume - 
+[2020-09-11T17:15:13.695] [INFO] default - RowDataPacket {
+  resume_id: 10931,
+  user_id: 13029,
+  percentage_complete: '',
+  resume_file_url: 'Chinenyenwa CV 2020.docx',
+  date_created: 2020-06-23T11:59:05.000Z,
+  date_updated: null,
+  profile_summary: '',
+  willingness_to_travel: '' }
+[2020-09-11T17:15:13.702] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13029                     ORDER BY date_created DESC LIMIT 7
+[2020-09-11T17:15:13.739] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE user_id = 13029
+[2020-09-11T17:15:13.757] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10931)
+[2020-09-11T17:15:13.764] [INFO] default - education - 
+[2020-09-11T17:15:13.767] [INFO] default - []
+[2020-09-11T17:15:13.774] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_jobs WHERE saved_by = 13029
+[2020-09-11T17:15:13.795] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10931)
+[2020-09-11T17:15:13.812] [INFO] default - work_experience - 
+[2020-09-11T17:15:13.815] [INFO] default - [ RowDataPacket {
+    experience_id: 3294,
+    user_id: 13029,
+    job_title: 'Technical Superintendent (Marine)',
+    employer_name: 'Test Company',
+    employer_address: 'Akatsi, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'May, 2007',
+    end_date: 'January, 2020',
+    job_responsibility: 'Test' } ]
+[2020-09-11T17:15:13.837] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13029) ORDER BY j.date_created DESC
+[2020-09-11T17:15:13.850] [INFO] default - result from qual query is : 0
+[2020-09-11T17:15:13.861] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10931)
+[2020-09-11T17:15:13.866] [INFO] default - certification - 
+[2020-09-11T17:15:13.875] [INFO] default - []
+[2020-09-11T17:15:13.911] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13029))                 ORDER BY j.date_created DESC
+[2020-09-11T17:15:13.926] [INFO] default - result from gender db is : 
+[2020-09-11T17:15:13.940] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10931)
+[2020-09-11T17:15:13.945] [INFO] default - specialization - 
+[2020-09-11T17:15:13.947] [INFO] default - []
+[2020-09-11T17:15:13.960] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10931)
+[2020-09-11T17:15:13.963] [INFO] default - skills - 
+[2020-09-11T17:15:13.971] [INFO] default - []
+[2020-09-11T17:15:13.979] [INFO] default - TypeError: User is not a constructor
+    at Object.calculateProfilePercentage (C:/xampp/htdocs/getajobgh/config/helpers.js:177:24)
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:182:65
+    at C:/xampp/htdocs/getajobgh/db/database.js:49:13
+    at Query.<anonymous> (C:/xampp/htdocs/getajobgh/db/database.js:29:32)
+    at Query.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:502:10)
+    at Query._callback (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:468:16)
+    at Query.Sequence.end (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:139:8)
+    at Query.EofPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:123:8)
+    at Protocol._parsePacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+[2020-09-11T17:15:17.113] [INFO] default - SQL: SELECT j.job_id, j.job_name, c.company_name, c.company_logo_url,                     co.country_name, s.state_name, jc.job_category_name, jt.job_type_name                     FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     WHERE j.application_deadline >= CURDATE()                     ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T17:15:23.965] [INFO] default - user is already authenticated..proceed
+[2020-09-11T17:15:24.695] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13029) ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T17:15:24.699] [INFO] default - result from qual query is : 0
+[2020-09-11T17:15:24.714] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13029))                 ORDER BY j.date_created DESC LIMIT 10
+[2020-09-11T17:15:24.717] [INFO] default - result from gender db is : 
+[2020-09-11T17:15:24.722] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13029                     ORDER BY date_created DESC LIMIT 7
+[2020-09-11T17:15:24.739] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13029
+[2020-09-11T17:15:24.748] [INFO] default - resume - 
+[2020-09-11T17:15:24.750] [INFO] default - RowDataPacket {
+  resume_id: 10931,
+  user_id: 13029,
+  percentage_complete: '',
+  resume_file_url: 'Chinenyenwa CV 2020.docx',
+  date_created: 2020-06-23T11:59:05.000Z,
+  date_updated: null,
+  profile_summary: '',
+  willingness_to_travel: '' }
+[2020-09-11T17:15:24.755] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE user_id = 13029
+[2020-09-11T17:15:24.766] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_jobs WHERE saved_by = 13029
+[2020-09-11T17:15:24.771] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10931)
+[2020-09-11T17:15:24.775] [INFO] default - education - 
+[2020-09-11T17:15:24.783] [INFO] default - []
+[2020-09-11T17:15:24.787] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10931)
+[2020-09-11T17:15:24.795] [INFO] default - work_experience - 
+[2020-09-11T17:15:24.799] [INFO] default - [ RowDataPacket {
+    experience_id: 3294,
+    user_id: 13029,
+    job_title: 'Technical Superintendent (Marine)',
+    employer_name: 'Test Company',
+    employer_address: 'Akatsi, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'May, 2007',
+    end_date: 'January, 2020',
+    job_responsibility: 'Test' } ]
+[2020-09-11T17:15:24.810] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13029) ORDER BY j.date_created DESC
+[2020-09-11T17:15:24.820] [INFO] default - result from qual query is : 0
+[2020-09-11T17:15:24.848] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10931)
+[2020-09-11T17:15:24.863] [INFO] default - certification - 
+[2020-09-11T17:15:24.865] [INFO] default - []
+[2020-09-11T17:15:24.873] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13029 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13029))                 ORDER BY j.date_created DESC
+[2020-09-11T17:15:24.880] [INFO] default - result from gender db is : 
+[2020-09-11T17:15:24.891] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10931)
+[2020-09-11T17:15:24.902] [INFO] default - specialization - 
+[2020-09-11T17:15:24.931] [INFO] default - []
+[2020-09-11T17:15:25.003] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10931)
+[2020-09-11T17:15:25.012] [INFO] default - skills - 
+[2020-09-11T17:15:25.016] [INFO] default - []
+[2020-09-11T17:15:25.020] [INFO] default - TypeError: User is not a constructor
+    at Object.calculateProfilePercentage (C:/xampp/htdocs/getajobgh/config/helpers.js:177:24)
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:182:65
+    at C:/xampp/htdocs/getajobgh/db/database.js:49:13
+    at Query.<anonymous> (C:/xampp/htdocs/getajobgh/db/database.js:29:32)
+    at Query.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:502:10)
+    at Query._callback (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:468:16)
+    at Query.Sequence.end (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:139:8)
+    at Query.EofPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:123:8)
+    at Protocol._parsePacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+[2020-09-11T17:15:46.179] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:17:58.497] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:20:11.149] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:21:22.867] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:22:17.833] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:22:56.471] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:23:15.730] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:35:15.165] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:36:10.255] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:36:52.889] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:37:39.187] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:40:54.018] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:41:26.494] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:42:29.509] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:48:26.148] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:51:02.031] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:54:19.897] [INFO] default - Listening on Port: 7011
+[2020-09-11T17:54:38.429] [INFO] default - Listening on Port: 7011

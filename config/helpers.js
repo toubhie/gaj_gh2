@@ -343,13 +343,12 @@ var helpers = {
 
     checkifAuthenticated: function(req, res) {
         try {
-            if (typeof req.session.passport == 'undefined') {
+            if (typeof req.session.passport == 'undefined' || !req.session.passport || req.session.passport == null) {
                 logger.log("user is not authenticated..back to login");
 
                 var go_to_login_file = `${appRoot}/views/go_to_login.html`;
 
                 res.sendFile(go_to_login_file);
-                //res.redirect('/login?');
 
                 return false;
             } else {
@@ -435,7 +434,7 @@ var helpers = {
                     file.close(); // close() is async, call cb after close compvares.
                 });
             }).on('error', function(err) { // Handle errors
-                fs.unlink(dest); // Devare the file async. (But we don't check the result)
+                fs.unlink(dest); // Delete the file async. (But we don't check the result)
                 console.log(err)
                     //if (cb) cb(err.message);
             });

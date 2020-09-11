@@ -1,22 +1,22 @@
-const express = require('express');
-const db = require('../db/database');
-const User = require('../models/user');
-const uuidv1 = require('uuid/v1');
-const config = require('../config/config');
-const mailer = require('../config/mail/mailer');
-const helpers = require('../config/helpers');
-const logger = require('../config/log4js');
-const bcrypt = require('bcryptjs');
-const formidable = require('formidable');
-const path = require('path');
+var express = require('express');
+var db = require('../db/database');
+var User = require('../models/user');
+var uuidv1 = require('uuid/v1');
+var config = require('../config/config');
+var mailer = require('../config/mail/mailer');
+var helpers = require('../config/helpers');
+var logger = require('../config/log4js');
+var bcrypt = require('bcryptjs');
+var formidable = require('formidable');
+var path = require('path');
 
-const session = require('express-session');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const Resume = require('../models/resume');
-const Job = require('../models/job');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var Resume = require('../models/resume');
+var Job = require('../models/job');
 
-const AzureHelper = require('../config/azure_helpers');
+var AzureHelper = require('../config/azure_helpers');
 
 const router = express.Router();
 
@@ -33,7 +33,9 @@ router.use(session({
 
 router.get('/dashboard', function(req, res) {
     try {
-        let userData = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
+
+        var userData = req.session.passport.user;
 
         res.render('candidate_dashboard', {
             view: 'dashboard',
@@ -46,11 +48,13 @@ router.get('/dashboard', function(req, res) {
 
 router.get('/profile', function(req, res) {
     try {
-        let userData = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
+
+        var userData = req.session.passport.user;
         logger.log(userData);
 
-        let redirectFrom = req.query.q;
-        let response = req.query.r;
+        var redirectFrom = req.query.q;
+        var response = req.query.r;
 
         if (typeof redirectFrom != 'undefined' && redirectFrom) {
             if (redirectFrom == 'summary') {
@@ -132,12 +136,14 @@ router.get('/profile', function(req, res) {
 
 router.get('/get-all-resume-info', function(req, res) {
     try {
-        let userData = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
+
+        var userData = req.session.passport.user;
 
         db.query(Resume.getResumeByUserIdQuery(userData.user_id), (err, data) => {
             if (err) { logger.log(err) } else {
-                let resume = data[0];
-                let resume_id = data[0].resume_id;
+                var resume = data[0];
+                var resume_id = data[0].resume_id;
 
                 logger.log("resume - ")
                 logger.log(resume);
@@ -145,35 +151,35 @@ router.get('/get-all-resume-info', function(req, res) {
                 //Get all Candidate Educations
                 db.query(Resume.getAllEducationByResumeIdQuery(resume_id), (err, data) => {
                     if (err) { logger.log(err) } else {
-                        let education = data;
+                        var education = data;
                         logger.log("education - ")
                         logger.log(education);
 
                         //Get all Candidate WEs
                         db.query(Resume.getAllWorkExperienceByResumeIdQuery(resume_id), (err, data) => {
                             if (err) { logger.log(err) } else {
-                                let work_experience = data;
+                                var work_experience = data;
                                 logger.log("work_experience - ")
                                 logger.log(work_experience);
 
                                 //Get all Candidate Certifications
                                 db.query(Resume.getAllCertificationByResumeIdQuery(resume_id), (err, data) => {
                                     if (err) { logger.log(err) } else {
-                                        let certification = data;
+                                        var certification = data;
                                         logger.log("certification - ")
                                         logger.log(certification);
 
                                         //Get all Candidate Specializations
                                         db.query(Resume.getAllSpecializationByResumeIdQuery(resume_id), (err, data) => {
                                             if (err) { logger.log(err) } else {
-                                                let specialization = data;
+                                                var specialization = data;
                                                 logger.log("specialization - ")
                                                 logger.log(specialization);
 
                                                 //Get all Candidate Skills
                                                 db.query(Resume.getAllSkillByResumeIdQuery(resume_id), (err, data) => {
                                                     if (err) { logger.log(err) } else {
-                                                        let skills = data;
+                                                        var skills = data;
                                                         logger.log("skills - ")
                                                         logger.log(skills);
 
@@ -209,8 +215,10 @@ router.get('/get-all-resume-info', function(req, res) {
 
 router.get('/find-a-job', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         logger.log("find-a-job")
-        let userData = req.session.passport.user;
+        var userData = req.session.passport.user;
 
         res.render('candidate_find_a_job', {
             view: 'find-a-job',
@@ -223,8 +231,10 @@ router.get('/find-a-job', function(req, res) {
 
 router.get('/job-applications', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         logger.log("job-applications")
-        let userData = req.session.passport.user;
+        var userData = req.session.passport.user;
 
         res.render('candidate_job_applications', {
             view: 'job-applications',
@@ -237,9 +247,11 @@ router.get('/job-applications', function(req, res) {
 
 router.get('/recommended-jobs', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         logger.log("recommended-jobs")
 
-        let userData = req.session.passport.user;
+        var userData = req.session.passport.user;
 
         res.render('candidate_recommended_jobs', {
             view: 'recommended-jobs',
@@ -252,13 +264,15 @@ router.get('/recommended-jobs', function(req, res) {
 
 router.get("/get-candidate-activity-history", (req, res, next) => {
     try {
-        let userData = req.session.passport.user;
-        let user_id = userData.user_id;
+        helpers.checkifAuthenticated(req, res);
 
-        let user = new User();
+        var userData = req.session.passport.user;
+        var user_id = userData.user_id;
+
+        var user = new User();
         db.query(user.getUserActivityHistory(user_id), (err, data) => {
             if (err) { logger.log(err) } else {
-                for (let i = 0; i < data.length; i++) {
+                for (var i = 0; i < data.length; i++) {
                     data[i].date_time_ago = helpers.getCurrentTimeAgo(data[i].date_created);
                 }
                 res.status(200).json({
@@ -274,22 +288,24 @@ router.get("/get-candidate-activity-history", (req, res, next) => {
 
 router.get("/get-candidate-statistics", (req, res, next) => {
     try {
-        let userData = req.session.passport.user;
-        let user_id = userData.user_id;
+        helpers.checkifAuthenticated(req, res);
 
-        let user = new User();
+        var userData = req.session.passport.user;
+        var user_id = userData.user_id;
+
+        var user = new User();
         db.query(user.getCountOfCandidateApplications(user_id), (err, data) => {
             if (err) { logger.log(err) } else {
-                let candidateJobApplicationsCount = data[0].count;
+                var candidateJobApplicationsCount = data[0].count;
 
                 db.query(user.getCountOfCandidateSavedJobs(user_id), (err, data) => {
                     if (err) { logger.log(err) } else {
-                        let candidateSavedJobsCount = data[0].count;
+                        var candidateSavedJobsCount = data[0].count;
 
-                        let job = new Job();
+                        var job = new Job();
                         job.jobRecommendationsCount(user_id, (err, data) => {
                             if (err) { logger.log(err) } else {
-                                let candidateRecommendedJobsCount = data;
+                                var candidateRecommendedJobsCount = data;
 
                                 res.status(200).json({
                                     message: "Candidate Statistics.",
@@ -310,16 +326,18 @@ router.get("/get-candidate-statistics", (req, res, next) => {
 
 router.post("/upload-resume", (req, res, next) => {
     try {
-        let user = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
 
-        let form = new formidable.IncomingForm();
+        var user = req.session.passport.user;
+
+        var form = new formidable.IncomingForm();
 
         /* form.on('fileBegin', function (name, file){
             if(file.name != ''){
                 // Check if dir exist. If not create
                 //helpers.checkIfDirectoryExist(config.resume_upload_dir);
 
-                let originalFileExtension = path.extname(file.name).toLowerCase();
+                var originalFileExtension = path.extname(file.name).toLowerCase();
 
                 file.name = user.user_id + '_' + user.first_name + '_' + user.last_name + '_resume' +
                             originalFileExtension;
@@ -344,18 +362,18 @@ router.post("/upload-resume", (req, res, next) => {
                 logger.log('##### files #####');
                 logger.log(files);
 
-                let azureHelper = new AzureHelper();
+                var azureHelper = new AzureHelper();
                 azureHelper.uploadResumeToAzure(files);
 
-                let user_id = user.user_id;
-                let resume_id = fields.resume_id;
-                let resume_url = '';
+                var user_id = user.user_id;
+                var resume_id = fields.resume_id;
+                var resume_url = '';
 
                 if (files.resume.name != '') {
                     resume_url = files.resume.name;
                 }
 
-                let userObj = new User();
+                var userObj = new User();
                 db.query(userObj.updateResumeFileUrlQuery(user_id, resume_id, resume_url), (err, data) => {
                     if (err) {
                         logger.log(err);
@@ -379,7 +397,7 @@ router.post("/upload-resume", (req, res, next) => {
 
         form.on('progress', function(bytesReceived, bytesExpected) {
             if (bytesReceived && bytesExpected) {
-                let percent_complete = (bytesReceived / bytesExpected) * 100;
+                var percent_complete = (bytesReceived / bytesExpected) * 100;
                 logger.log(percent_complete.toFixed(2));
             }
         });
@@ -390,16 +408,18 @@ router.post("/upload-resume", (req, res, next) => {
 
 router.post("/upload-resume-old", (req, res, next) => {
     try {
-        let user = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
 
-        let form = new formidable.IncomingForm();
+        var user = req.session.passport.user;
+
+        var form = new formidable.IncomingForm();
 
         form.on('fileBegin', function(name, file) {
             if (file.name != '') {
                 // Check if dir exist. If not create
                 helpers.checkIfDirectoryExist(config.resume_upload_dir);
 
-                let originalFileExtension = path.extname(file.name).toLowerCase();
+                var originalFileExtension = path.extname(file.name).toLowerCase();
 
                 file.name = user.user_id + '_' + user.first_name + '_' + user.last_name + '_resume' +
                     originalFileExtension;
@@ -424,15 +444,15 @@ router.post("/upload-resume-old", (req, res, next) => {
                 logger.log('##### files #####');
                 logger.log(files);
 
-                let user_id = user.user_id;
-                let resume_id = fields.resume_id;
-                let resume_url = '';
+                var user_id = user.user_id;
+                var resume_id = fields.resume_id;
+                var resume_url = '';
 
                 if (files.resume.name != '') {
                     resume_url = files.resume.name;
                 }
 
-                let userObj = new User();
+                var userObj = new User();
                 db.query(userObj.updateResumeFileUrlQuery(user_id, resume_id, resume_url), (err, data) => {
                     if (err) {
                         logger.log(err);
@@ -456,7 +476,7 @@ router.post("/upload-resume-old", (req, res, next) => {
 
         form.on('progress', function(bytesReceived, bytesExpected) {
             if (bytesReceived && bytesExpected) {
-                let percent_complete = (bytesReceived / bytesExpected) * 100;
+                var percent_complete = (bytesReceived / bytesExpected) * 100;
                 logger.log(percent_complete.toFixed(2));
             }
         });
@@ -467,16 +487,18 @@ router.post("/upload-resume-old", (req, res, next) => {
 
 router.post("/upload-profile-picture", (req, res, next) => {
     try {
-        let userData = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
 
-        let form = new formidable.IncomingForm();
+        var userData = req.session.passport.user;
+
+        var form = new formidable.IncomingForm();
 
         /*  form.on('fileBegin', function (name, file){
             if(file.name != ''){
                 // Check if dir exist. If not create
                 //helpers.checkIfDirectoryExist(config.profile_picture_upload_dir);
 
-                let originalFileExtension = path.extname(file.name).toLowerCase();
+                var originalFileExtension = path.extname(file.name).toLowerCase();
 
                 file.name = userData.user_id + '_' + userData.first_name + '_' + 
                             userData.last_name + '_profile_pic' + originalFileExtension;
@@ -489,19 +511,19 @@ router.post("/upload-profile-picture", (req, res, next) => {
         form.parse(req, function(err, fields, files) {
             if (err) { logger.log(err) } else {
 
-                let azureHelper = new AzureHelper();
+                var azureHelper = new AzureHelper();
                 azureHelper.uploadProfilePictureToAzure(files);
 
-                let user_id = userData.user_id;
-                let profile_pic_url = '';
-                let full_profile_pic_url = '';
+                var user_id = userData.user_id;
+                var profile_pic_url = '';
+                var full_profile_pic_url = '';
 
                 if (files.profile_picture.name != '') {
                     profile_pic_url = files.profile_picture.name;
                     full_profile_pic_url = config.azure_profile_pic_url + profile_pic_url;
                 }
 
-                let user = new User();
+                var user = new User();
                 db.query(user.updateProfilePictureUrlQuery(user_id, full_profile_pic_url), (err, data) => {
                     if (err) {
                         logger.log(err);
@@ -575,7 +597,7 @@ router.post("/upload-profile-picture", (req, res, next) => {
 
         form.on('progress', function(bytesReceived, bytesExpected) {
             if (bytesReceived && bytesExpected) {
-                let percent_complete = (bytesReceived / bytesExpected) * 100;
+                var percent_complete = (bytesReceived / bytesExpected) * 100;
                 logger.log(percent_complete.toFixed(2));
             }
         });
@@ -586,16 +608,18 @@ router.post("/upload-profile-picture", (req, res, next) => {
 
 router.post("/upload-profile-picture-old", (req, res, next) => {
     try {
-        let userData = req.session.passport.user;
+        helpers.checkifAuthenticated(req, res);
 
-        let form = new formidable.IncomingForm();
+        var userData = req.session.passport.user;
+
+        var form = new formidable.IncomingForm();
 
         form.on('fileBegin', function(name, file) {
             if (file.name != '') {
                 // Check if dir exist. If not create
                 helpers.checkIfDirectoryExist(config.profile_picture_upload_dir);
 
-                let originalFileExtension = path.extname(file.name).toLowerCase();
+                var originalFileExtension = path.extname(file.name).toLowerCase();
 
                 file.name = userData.user_id + '_' + userData.first_name + '_' +
                     userData.last_name + '_profile_pic' + originalFileExtension;
@@ -614,16 +638,16 @@ router.post("/upload-profile-picture-old", (req, res, next) => {
 
         form.parse(req, function(err, fields, files) {
             if (err) { logger.log(err) } else {
-                let user_id = userData.user_id;
-                let profile_pic_url = '';
-                let full_profile_pic_url = '';
+                var user_id = userData.user_id;
+                var profile_pic_url = '';
+                var full_profile_pic_url = '';
 
                 if (files.profile_picture.name != '') {
                     profile_pic_url = files.profile_picture.name;
                     full_profile_pic_url = config.profile_picture_dir + profile_pic_url;
                 }
 
-                let user = new User();
+                var user = new User();
                 db.query(user.updateProfilePictureUrlQuery(user_id, full_profile_pic_url), (err, data) => {
                     if (err) {
                         logger.log(err);
@@ -697,7 +721,7 @@ router.post("/upload-profile-picture-old", (req, res, next) => {
 
         form.on('progress', function(bytesReceived, bytesExpected) {
             if (bytesReceived && bytesExpected) {
-                let percent_complete = (bytesReceived / bytesExpected) * 100;
+                var percent_complete = (bytesReceived / bytesExpected) * 100;
                 logger.log(percent_complete.toFixed(2));
             }
         });
@@ -709,8 +733,10 @@ router.post("/upload-profile-picture-old", (req, res, next) => {
 
 router.get('/saved-jobs', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         logger.log("saved-jobs")
-        let userData = req.session.passport.user;
+        var userData = req.session.passport.user;
 
         res.render('candidate_saved_jobs', {
             view: 'saved-jobs',
@@ -723,10 +749,12 @@ router.get('/saved-jobs', function(req, res) {
 
 router.get('/get-all-saved-jobs', function(req, res) {
     try {
-        let userData = req.session.passport.user;
-        let user_id = userData.user_id;
+        helpers.checkifAuthenticated(req, res);
 
-        let user = new User();
+        var userData = req.session.passport.user;
+        var user_id = userData.user_id;
+
+        var user = new User();
         db.query(user.getAllCandidatesSavedJobs(user_id), (err, data) => {
             if (!err) {
                 res.status(200).json({
@@ -742,12 +770,14 @@ router.get('/get-all-saved-jobs', function(req, res) {
 
 router.post("/remove-saved-job", (req, res, next) => {
     try {
-        let saved_job_id = req.body.saved_job_id;
+        helpers.checkifAuthenticated(req, res);
 
-        let userData = req.session.passport.user;
-        let user_id = userData.user_id;
+        var saved_job_id = req.body.saved_job_id;
 
-        let job = new Job();
+        var userData = req.session.passport.user;
+        var user_id = userData.user_id;
+
+        var job = new Job();
         db.query(job.removeSavedJob(saved_job_id), (err, data) => {
             if (!err) {
                 if (data && data.affectedRows > 0) {
@@ -773,13 +803,15 @@ router.post("/remove-saved-job", (req, res, next) => {
 
 router.get('/settings', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         logger.log("settings")
-        let userData = req.session.passport.user;
+        var userData = req.session.passport.user;
 
         logger.log(userData)
 
-        let redirectFrom = req.query.f;
-        let response = req.query.r;
+        var redirectFrom = req.query.f;
+        var response = req.query.r;
 
         if (typeof redirectFrom != 'undefined' && redirectFrom) {
             if (redirectFrom == 'u_pp') {
@@ -805,27 +837,29 @@ router.get('/settings', function(req, res) {
 
 router.post("/add", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         'use strict';
 
         //read user information from request
-        let user = new User();
+        var user = new User();
 
-        let user_uuid = uuidv1();
-        let first_name = req.body.first_name;
-        let last_name = req.body.last_name;
-        let email = req.body.email;
-        let phone_number = req.body.phone_number;
-        let photo_url = req.body.photo_url;
-        let social_media_id = req.body.social_media_id;
-        let password = req.body.password;
+        var user_uuid = uuidv1();
+        var first_name = req.body.first_name;
+        var last_name = req.body.last_name;
+        var email = req.body.email;
+        var phone_number = req.body.phone_number;
+        var photo_url = req.body.photo_url;
+        var social_media_id = req.body.social_media_id;
+        var password = req.body.password;
 
-        let username = '';
-        let other_name = '';
-        let gender = '';
-        let dob = '';
-        let profile_completeness = '';
-        let tagline = '';
-        let address = '';
+        var username = '';
+        var other_name = '';
+        var gender = '';
+        var dob = '';
+        var profile_completeness = '';
+        var tagline = '';
+        var address = '';
 
         db.query(User.checkIfEmailExist(email), (err, data) => {
             if (!err) {
@@ -833,13 +867,13 @@ router.post("/add", (req, res, next) => {
                     res.redirect('/register?v=f');
 
                 } else {
-                    let is_activated = config.not_activated;
+                    var is_activated = config.not_activated;
 
                     db.query(user.createUserQuery(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender,
                         dob, profile_completeness, photo_url, social_media_id, tagline, password, is_activated), (err, data) => {
                         if (!err) {
                             if (data) {
-                                let user_id = data.insertId;
+                                var user_id = data.insertId;
                                 logger.log("User inserted");
 
                                 db.query(User.insertUserRole(user_id, config.candidate_role_tag), (err, data) => {
@@ -847,15 +881,15 @@ router.post("/add", (req, res, next) => {
 
                                         logger.log("UserRole inserted");
 
-                                        let resume = new Resume();
+                                        var resume = new Resume();
 
                                         db.query(resume.createResumeQuery(user_id), (err, data) => {
                                             if (!err) {
                                                 logger.log("UserResume Created");
 
-                                                let is_logged_in = true;
-                                                let resume_id = data.insertId;
-                                                let is_first_login = config.true;
+                                                var is_logged_in = true;
+                                                var resume_id = data.insertId;
+                                                var is_first_login = config.true;
 
                                                 //Save user id
                                                 //sessionStore.saveUserId(req, user_id);  
@@ -867,7 +901,7 @@ router.post("/add", (req, res, next) => {
                                                 // logger.log(req.session)
                                                 // req.session.passport.user.user_id = user_id;
 
-                                                let userData = {
+                                                var userData = {
                                                     user_id: user_id,
                                                     user_uuid: user_uuid,
                                                     first_name: first_name,
@@ -892,21 +926,21 @@ router.post("/add", (req, res, next) => {
                                                 helpers.saveActivityTrail(user_id, "Register", "Registration Completed.");
 
 
-                                                let resumeEducation = {};
-                                                let resumeWorkExperience = {};
-                                                let resumeCertification = {};
-                                                let resumeSkill = {};
+                                                var resumeEducation = {};
+                                                var resumeWorkExperience = {};
+                                                var resumeCertification = {};
+                                                var resumeSkill = {};
 
                                                 // process profile percentage
                                                 helpers.calculateProfilePercentage(user_id, userData, resume,
                                                     resumeEducation, resumeWorkExperience, resumeCertification, resumeSkill);
 
                                                 // send welcome mail
-                                                let fullname = first_name + ' ' + last_name;
+                                                var fullname = first_name + ' ' + last_name;
                                                 mailer.sendWelcomeMail(req, user_id, fullname, email);
 
                                                 // Redirect to login authentication to load session
-                                                let redirect_link = '/auth/login?username=' + email + '&password=' + password;
+                                                var redirect_link = '/auth/login?username=' + email + '&password=' + password;
                                                 res.redirect(redirect_link);
                                             }
                                         })
@@ -925,8 +959,10 @@ router.post("/add", (req, res, next) => {
 
 router.post("/update", (req, res, next) => {
     try {
-        let userData = req.session.passport.user;
-        let user_id = userData.user_id;
+        helpers.checkifAuthenticated(req, res);
+
+        var userData = req.session.passport.user;
+        var user_id = userData.user_id;
 
         if (req.body.current_password) {
             changePassword(req, res, user_id, userData);
@@ -940,19 +976,19 @@ router.post("/update", (req, res, next) => {
 
 function updateAllProfile(req, res, user_id, userData) {
     try {
-        let first_name = req.body.first_name;
-        let last_name = req.body.last_name;
-        let email = req.body.email;
-        let phone_number = req.body.phone_number;
-        let address = req.body.address;
-        let gender = req.body.gender;
-        let dob = req.body.dob;
-        let tagline = req.body.tagline;
-        let state = req.body.state;
-        let country = req.body.country;
-        let industry = req.body.industry;
+        var first_name = req.body.first_name;
+        var last_name = req.body.last_name;
+        var email = req.body.email;
+        var phone_number = req.body.phone_number;
+        var address = req.body.address;
+        var gender = req.body.gender;
+        var dob = req.body.dob;
+        var tagline = req.body.tagline;
+        var state = req.body.state;
+        var country = req.body.country;
+        var industry = req.body.industry;
 
-        let user = new User();
+        var user = new User();
         db.query(user.updateCandidateQuery(user_id, first_name, last_name, email, phone_number,
             address, gender, dob, tagline, state, country, industry), (err, data) => {
             if (!err) {
@@ -1023,8 +1059,8 @@ function updateAllProfile(req, res, user_id, userData) {
 function changePassword(req, res, user_id, userData) {
     try {
         logger.log("in update password ooo")
-        let current_password = req.body.current_password;
-        let new_password = req.body.new_password;
+        var current_password = req.body.current_password;
+        var new_password = req.body.new_password;
 
         db.query(User.getUserPasswordQuery(user_id), (err, data) => {
             if (err) { logger.log(err) } else if (!data) {
@@ -1086,6 +1122,8 @@ function changePassword(req, res, user_id, userData) {
 
 router.post("/delete", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var userId = req.body.userId;
 
         db.query(User.deleteUserByIdQuery(userId), (err, data) => {
@@ -1109,8 +1147,10 @@ router.post("/delete", (req, res, next) => {
 
 router.get("/get-profile-percentage", (req, res, next) => {
     try {
-        let userData = req.session.passport.user;
-        let user_id = userData.user_id;
+        helpers.checkifAuthenticated(req, res);
+
+        var userData = req.session.passport.user;
+        var user_id = userData.user_id;
 
         db.query(User.getProfilePercentage(user_id), (err, data) => {
             if (err) { logger.log(err) } else {

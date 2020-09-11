@@ -421,15 +421,15 @@
                                                     </div> \
                                                 </div>';
                 } else{
-                    for(let i = 0; i < data.work_experience.length; i++){
+                    for(var i = 0; i < data.work_experience.length; i++){
 
-                        let companyName = data.work_experience[i].employer_name;
-                        let jobTitle = data.work_experience[i].job_title;
-                        let employerAddress = data.work_experience[i].employer_address;
-                        let startDate = data.work_experience[i].start_date;
-                        let endDate = data.work_experience[i].end_date;
-                        let jobDescription = data.work_experience[i].job_responsibility;
-                        let experienceId = data.work_experience[i].experience_id;
+                        var companyName = data.work_experience[i].employer_name;
+                        var jobTitle = data.work_experience[i].job_title;
+                        var employerAddress = data.work_experience[i].employer_address;
+                        var startDate = data.work_experience[i].start_date;
+                        var endDate = data.work_experience[i].end_date;
+                        var jobDescription = data.work_experience[i].job_responsibility;
+                        var experienceId = data.work_experience[i].experience_id;
 
 
                         workExperienceBoxContent += '<div class="experieces"> \
@@ -488,8 +488,8 @@
                 } else{
                     var candidate_skills_id = [];
 
-                    for(let i = 0; i < data.skills.length; i++){
-                        let skill_name = data.skills[i].label;
+                    for(var i = 0; i < data.skills.length; i++){
+                        var skill_name = data.skills[i].label;
 
                         skillBoxContent += '<div class="site_row mt-3 skills_list"> \
                                                 <ul> \
@@ -524,13 +524,13 @@
                                             </div>';
                                         
                 } else {
-                    for(let i = 0; i < data.education.length; i++){
-                        let nameOfInstitution = data.education[i].name_of_institution;
-                        let courseOfStudy = data.education[i].course_of_study;
-                        let qualification = data.education[i].qualification;
-                        let startDate = data.education[i].start_date;
-                        let endDate = data.education[i].end_date;
-                        let educationId = data.education[i].education_id;
+                    for(var i = 0; i < data.education.length; i++){
+                        var nameOfInstitution = data.education[i].name_of_institution;
+                        var courseOfStudy = data.education[i].course_of_study;
+                        var qualification = data.education[i].qualification;
+                        var startDate = data.education[i].start_date;
+                        var endDate = data.education[i].end_date;
+                        var educationId = data.education[i].education_id;
 
                         educationBoxContent += '<div class="site_row mt-3 skills_list certs"> \
                                                     <ul> \
@@ -565,11 +565,11 @@
                                                     </div> \
                                                 </div>';
                 } else{                             
-                    for(let i = 0; i < data.certification.length; i++){
-                        let certification_id = data.certification[i].certification_id;
-                        let certification_name = data.certification[i].certification_name;
-                        let certification_description = data.certification[i].certification_description;
-                        let date_obtained = data.certification[i].date_obtained;
+                    for(var i = 0; i < data.certification.length; i++){
+                        var certification_id = data.certification[i].certification_id;
+                        var certification_name = data.certification[i].certification_name;
+                        var certification_description = data.certification[i].certification_description;
+                        var date_obtained = data.certification[i].date_obtained;
 
                         certificationBoxContent +=  '<div class="site_row mt-3 skills_list certs"> \
                                                         <ul> \

@@ -1,13 +1,16 @@
-const express = require('express');
-const db = require('../db/database');
-const Company = require('../models/company');
-const uuidv4 = require('uuid/v4');
-const logger = require('../config/log4js');
+var express = require('express');
+var db = require('../db/database');
+var Company = require('../models/company');
+var uuidv4 = require('uuid/v4');
+var logger = require('../config/log4js');
+var helpers = require('./../config/helpers');
 
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         db.query(Company.getAllCompaniesQuery(), (err, data) => {
             if (!err) {
                 res.status(200).json({
@@ -23,8 +26,10 @@ router.get("/", (req, res, next) => {
 
 router.post("/add", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
-        let company = new Company(uuidv4(), req.body.company_name, req.body.rc_number);
+        var company = new Company(uuidv4(), req.body.company_name, req.body.rc_number);
 
         db.query(company.createCompanyQuery(), (err, data) => {
             res.status(200).json({
@@ -39,7 +44,9 @@ router.post("/add", (req, res, next) => {
 
 router.get("/:companyId", (req, res, next) => {
     try {
-        let companyId = req.params.companyId;
+        helpers.checkifAuthenticated(req, res);
+
+        var companyId = req.params.companyId;
 
         db.query(Company.getCompanyByIdQuery(companyId), (err, data) => {
             if (!err) {
@@ -62,6 +69,8 @@ router.get("/:companyId", (req, res, next) => {
 
 router.post("/delete", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var companyId = req.body.companyId;
 
         db.query(Company.deleteCompanyByIdQuery(companyId), (err, data) => {

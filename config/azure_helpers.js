@@ -49,11 +49,11 @@ class AzureHelper {
 
             // console.log(`Downloaded blob content: "${downloadedContent}"`);
 
-            //await blockBlobClient.devare(aborter);
-            //console.log(`Block blob "${blobName}" is devared`);
+            //await blockBlobClient.delete(aborter);
+            //console.log(`Block blob "${blobName}" is deleted`);
 
-            //await containerClient.devare(aborter);
-            //console.log(`Container "${containerName}" is devared`);
+            //await containerClient.delete(aborter);
+            //console.log(`Container "${containerName}" is deleted`);
         } catch (err) {
             logger.log(err);
         }

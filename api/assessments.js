@@ -10,6 +10,8 @@ var router = express.Router();
 
 router.get("/", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         db.query(Assessment.getAllAssessmentsQuery(), (err, data) => {
             if (!err) {
                 res.status(200).json({
@@ -25,6 +27,8 @@ router.get("/", (req, res, next) => {
 
 router.post("/add", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var assessment_name = req.body.assessment_name;
         var assessment_type = req.body.assessment_type;
@@ -53,6 +57,8 @@ router.post("/add", (req, res, next) => {
 
 router.get("/get-create-assessment-params", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var userData = req.session.passport.user;
         var user_id = userData.user_id;
 
@@ -84,6 +90,8 @@ router.get("/get-create-assessment-params", (req, res, next) => {
 
 router.post("/get-edit-assessment-params", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessment_id = req.body.assessment_id;
         var userData = req.session.passport.user;
         var user_id = userData.user_id;
@@ -123,6 +131,8 @@ router.post("/get-edit-assessment-params", (req, res, next) => {
 
 router.get("/get-all-recruiters-assessments", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var userData = req.session.passport.user;
         var user_id = userData.user_id;
 
@@ -145,6 +155,8 @@ router.get("/get-all-recruiters-assessments", (req, res, next) => {
 
 router.post("/create-questions", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var assessment_id = req.body.assessment_id;
         var question_set = JSON.parse(req.body.question_set);
@@ -184,6 +196,8 @@ router.post("/create-questions", (req, res, next) => {
 
 router.post("/edit-questions", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var assessment_id = req.body.assessment_id;
         var question_set = JSON.parse(req.body.question_set);
@@ -241,8 +255,9 @@ router.post("/edit-questions", (req, res, next) => {
 
 router.post("/edit-assessment-data", (req, res, next) => {
     try {
-        //read user information from request
+        helpers.checkifAuthenticated(req, res);
 
+        //read user information from request
         var assessment_id = req.body.assessment_id;
         var assessment_name = req.body.assessment_name;
         var assessment_type = req.body.assessment_type;
@@ -268,6 +283,8 @@ router.post("/edit-assessment-data", (req, res, next) => {
 
 router.get('/assessment-detail/:assessmentId', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessment_id = req.params.assessmentId;
         var userData = req.session.passport.user;
 
@@ -290,6 +307,8 @@ router.get('/assessment-detail/:assessmentId', function(req, res) {
 
 router.post('/get-all-assessment-candidates', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessment_id = req.body.assessment_id;
         var userData = req.session.passport.user;
         var user_id = userData.user_id;
@@ -325,6 +344,8 @@ router.post('/get-all-assessment-candidates', function(req, res) {
 
 router.get('/edit-assessment/:assessmentId', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessmentId = req.params.assessmentId;
         var userData = req.session.passport.user;
 
@@ -345,22 +366,24 @@ router.get('/edit-assessment/:assessmentId', function(req, res) {
     }
 });
 
-router.post("/devare-assessment", (req, res, next) => {
+router.post("/delete-assessment", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessment_id = req.body.assessment_id;
         var assessment_name = req.body.assessment_name;
 
         var userData = req.session.passport.user;
         var user_id = userData.user_id;
 
-        db.query(Assessment.devareAssessmentByIdQuery(assessment_id), (err, data) => {
+        db.query(Assessment.deleteAssessmentByIdQuery(assessment_id), (err, data) => {
             if (!err) {
                 if (data && data.affectedRows > 0) {
 
-                    helpers.saveActivityTrail(user_id, "Assessment Devared", "You have devared your assessment.");
+                    helpers.saveActivityTrail(user_id, "Assessment Deleted", "You have deleted your assessment.");
 
                     res.status(200).json({
-                        message: 'Assessment devared.',
+                        message: 'Assessment deleted.',
                         affectedRows: data.affectedRows
                     });
                 } else {
@@ -377,6 +400,8 @@ router.post("/devare-assessment", (req, res, next) => {
 
 router.get('/take-assessment/:assessmentToken', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessmentToken = req.params.assessmentToken;
 
         var assessment = new Assessment();
@@ -394,6 +419,8 @@ router.get('/take-assessment/:assessmentToken', function(req, res) {
 
 router.get('/assessment-info/:assessmentId', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessmentId = req.params.assessmentId;
 
         var assessment = new Assessment();
@@ -413,6 +440,8 @@ router.get('/assessment-info/:assessmentId', function(req, res) {
 
 router.get('/start-test/:assessmentToken', function(req, res) {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessmentToken = req.params.assessmentToken;
 
         if (typeof req.session.passport != 'undefined' || req.session.passport || req.session.passport != null) {
@@ -441,6 +470,8 @@ router.get('/start-test/:assessmentToken', function(req, res) {
 
 router.post("/get-assessment-questions", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var assessment_id = req.body.assessment_id;
 
         db.query(Assessment.getAllAssessmentQuestions(assessment_id), (err, data) => {

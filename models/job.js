@@ -65,7 +65,7 @@ class Job {
     }
 
     removeSavedJob(saved_job_id) {
-        var sql = `DEvarE FROM saved_jobs WHERE saved_job_id = ${saved_job_id}`;
+        var sql = `DELETE FROM saved_jobs WHERE saved_job_id = ${saved_job_id}`;
 
         return sql;
     }
@@ -200,7 +200,7 @@ class Job {
         return sql;
     }
 
-    static devareJobByIdQuery(job_id) {
+    static deleteJobByIdQuery(job_id) {
         var sql = `UPDATE job SET is_deleted = '${config.true}' WHERE job_id = ${job_id}`;
         return sql;
     }

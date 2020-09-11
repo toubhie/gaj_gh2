@@ -35,7 +35,9 @@ router.use(session({
     cookie: { maxAge: config.session_cookie_max_age }
 }));
 
-router.get("/", (req, res, next) => {});
+router.get("/", (req, res, next) => {
+    helpers.checkifAuthenticated(req, res);
+});
 
 router.get('/dashboard', function(req, res) {
     try {
@@ -1673,17 +1675,17 @@ router.post("/remove-saved-candidate", (req, res, next) => {
     }
 });
 
-router.post("/devare", (req, res, next) => {
+router.post("/delete", (req, res, next) => {
     try {
         helpers.checkifAuthenticated(req, res);
 
         var userId = req.body.userId;
 
-        db.query(User.devareUserByIdQuery(userId), (err, data) => {
+        db.query(User.deleteUserByIdQuery(userId), (err, data) => {
             if (!err) {
                 if (data && data.affectedRows > 0) {
                     res.status(200).json({
-                        message: `User devared with id = ${userId}.`,
+                        message: `User deleted with id = ${userId}.`,
                         affectedRows: data.affectedRows
                     });
                 } else {

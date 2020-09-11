@@ -3,11 +3,14 @@ var db = require('../db/database');
 var User = require('../models/user');
 var uuidv1 = require('uuid/v1');
 var logger = require('./../config/log4js');
+var helpers = require('../config/helpers');
 
 var router = express.Router();
 
 router.get("/", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         db.query(User.getAllUsersQuery(), (err, data) => {
             if (!err) {
                 res.status(200).json({
@@ -23,6 +26,8 @@ router.get("/", (req, res, next) => {
 
 router.post("/add", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         //read user information from request
         var user = new User(uuidv1(), req.body.first_name, req.body.last_name, req.body.email, req.body.password);
 
@@ -39,6 +44,8 @@ router.post("/add", (req, res, next) => {
 
 router.get("/:userId", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var userId = req.params.userId;
 
         db.query(User.getUserByIdQuery(userId), (err, data) => {
@@ -61,15 +68,17 @@ router.get("/:userId", (req, res, next) => {
     }
 });
 
-router.post("/devare", (req, res, next) => {
+router.post("/delete", (req, res, next) => {
     try {
+        helpers.checkifAuthenticated(req, res);
+
         var userId = req.body.userId;
 
-        db.query(User.devareUserByIdQuery(userId), (err, data) => {
+        db.query(User.vUserByIdQuery(userId), (err, data) => {
             if (!err) {
                 if (data && data.affectedRows > 0) {
                     res.status(200).json({
-                        message: `User devared with id = ${userId}.`,
+                        message: `User deleted with id = ${userId}.`,
                         affectedRows: data.affectedRows
                     });
                 } else {

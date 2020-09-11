@@ -1,21 +1,22 @@
-const express = require('express');
-const db = require('../db/database');
-const User = require('../models/user');
-const logger = require('./../config/log4js');
+var express = require('express');
+var db = require('../db/database');
+var User = require('../models/user');
+var logger = require('./../config/log4js');
+var helpers = require('./../config/helpers');
 
 const router = express.Router();
 
 router.get("/:inviteToken", (req, res, next) => {
     try {
-        let inviteToken = req.params.inviteToken;
+        var inviteToken = req.params.inviteToken;
 
         db.query(User.getUserByInviteToken(inviteToken), (err, data) => {
             if (!err) {
                 if (data && data.length > 0) {
                     logger.log("User id Invited - " + data[0].user_id);
-                    let user_id = data[0].user_id;
+                    var user_id = data[0].user_id;
 
-                    let user = new User();
+                    var user = new User();
                     db.query(user.deactivateInviteToken(data[0].user_id), (err, data) => {
                         if (err) { logger.log(err) } else {
                             logger.log("User Invite Token is deactivated");

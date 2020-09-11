@@ -43,8 +43,8 @@ module.exports = {
     "resumes_folder": "resumes/",
     "additional_files_folder": "additional_files/",
 
-    "azure_storage_account_name": process.env.StorageAccountName,
-    "azure_storage_access_key": process.env.StorageAccountKey,
+    "azure_storage_account_name": process.env.StorageAccountName || "cilappstorageaccount",
+    "azure_storage_access_key": process.env.StorageAccountKey || "icejvXX2h8y2skvKZ+bF1D9SW5ZJR2cX+e6UO6URXfb05RH8gkwMSjYn+WpNNFkOejqOEhMf3nV0z1gqbUnNFQ==",
 
     "azure_resume_url": "https://cilappstorageaccount.blob.core.windows.net/getajobgh/docs/resumes/",
     "azure_additional_files_url": "https://cilappstorageaccount.blob.core.windows.net/getajobgh/docs/additional_files/",
@@ -72,10 +72,16 @@ module.exports = {
 
     // DB setting
     "use_database": true,
-    "local_db_host": process.env.DB_HOST,
-    "local_db_username": process.env.DB_USER,
-    "local_db_password": process.env.DB_PASS,
-    "local_database": process.env.DB_NAME,
+    //"local_db_host": "localhost",
+    //"local_db_username": "root",
+    //"local_db_password": "",
+    //"local_database": "getajobgh",
+
+    "use_database": true,
+    "local_db_host": process.env.DB_HOST || "localhost",
+    "local_db_username": process.env.DB_USER || "root",
+    "local_db_password": process.env.DB_PASS || "",
+    "local_database": process.env.DB_NAME || "getajobgh",
 
     "sql_server_host": "sa",
     "sql_server_username": "sa",

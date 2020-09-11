@@ -127,7 +127,7 @@ class Assessment {
         return sql;
     }
 
-    static devareAssessmentByIdQuery(assessment_id) {
+    static deleteAssessmentByIdQuery(assessment_id) {
         var sql = `UPDATE assessment SET is_deleted = '${config.true}' WHERE assessment_id = ${assessment_id}`;
         return sql;
     }
