@@ -45,6 +45,4 @@ class Company {
     }
 }
 
-//export default Company;
-
 module.exports = Company;

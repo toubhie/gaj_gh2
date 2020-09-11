@@ -1487,6 +1487,4 @@ class Job {
     }
 }
 
-//export default Job;
-
 module.exports = Job;

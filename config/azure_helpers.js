@@ -210,4 +210,4 @@ class AzureHelper {
 
 }
 
-export default AzureHelper;
+module.exports = AzureHelper;

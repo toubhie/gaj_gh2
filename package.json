@@ -11,11 +11,7 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "build": "babel . --ignore node_modules,scratch -d build --copy-files",
-        "start3": "nodemon server.js --exec babel-node --presets env",
-        "start": "node server.js",
-        "start1": "rimraf build && npm run build && node ./build/server.js",
-        "start2": "npm run build && node ./build/server.js && rimraf build/build"
+        "start": "node server.js"
     },
     "dependencies": {
         "@azure/abort-controller": "^1.0.0",

@@ -183,6 +183,4 @@ class Assessment {
     }
 }
 
-//export default Assessment;
-
 module.exports = Assessment;

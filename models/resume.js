@@ -704,6 +704,4 @@ class Resume {
 
 }
 
-//export default Resume;
-
 module.exports = Resume;
