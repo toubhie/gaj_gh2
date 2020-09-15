@@ -8,7 +8,7 @@ class User {
     constructor() {}
 
     createUserQuery(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender,
-        dob, profile_compvareness, photo_url, social_media_id, tagline, password, is_activated) {
+        dob, profile_completeness, photo_url, social_media_id, tagline, password, is_activated) {
 
         'use strict';
 
@@ -21,7 +21,7 @@ class User {
         phone_number = helper.checkifUndefined(phone_number);
         gender = helper.checkifUndefined(gender);
         dob = helper.checkifUndefined(dob);
-        profile_compvareness = helper.checkifUndefined(profile_compvareness);
+        profile_completeness = helper.checkifUndefined(profile_completeness);
         photo_url = helper.checkifUndefined(photo_url);
         social_media_id = helper.checkifUndefined(social_media_id);
         tagline = helper.checkifUndefined(tagline);
@@ -33,17 +33,17 @@ class User {
         password = bcrypt.hashSync(password, config.salt_rounds);
 
         var sql = `INSERT INTO user(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender, \
-        dob, profile_compvareness, photo_url, social_media_id, tagline, password, date_created, is_activated, is_first_login)\
+        dob, profile_completeness, photo_url, social_media_id, tagline, password, date_created, is_activated, is_first_login)\
          VALUES ('${user_uuid}',\
         '${first_name}', '${last_name}', '${username}','${other_name}', '${email}', '${phone_number}', '${gender}',\
-        '${dob}', '${profile_compvareness}', '${photo_url}', '${social_media_id}', '${tagline}', '${password}',\
+        '${dob}', '${profile_completeness}', '${photo_url}', '${social_media_id}', '${tagline}', '${password}',\
         '${date_created}', '${is_activated}', '${config.true}')`;
 
         return sql;
     }
 
     createTeammateQuery(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender,
-        dob, profile_compvareness, photo_url, social_media_id, tagline, password, is_activated, company_id) {
+        dob, profile_completeness, photo_url, social_media_id, tagline, password, is_activated, company_id) {
 
         'use strict';
 
@@ -56,7 +56,7 @@ class User {
         phone_number = helper.checkifUndefined(phone_number);
         gender = helper.checkifUndefined(gender);
         dob = helper.checkifUndefined(dob);
-        profile_compvareness = helper.checkifUndefined(profile_compvareness);
+        profile_completeness = helper.checkifUndefined(profile_completeness);
         photo_url = helper.checkifUndefined(photo_url);
         social_media_id = helper.checkifUndefined(social_media_id);
         tagline = helper.checkifUndefined(tagline);
@@ -68,10 +68,10 @@ class User {
         password = bcrypt.hashSync(password, config.salt_rounds);
 
         var sql = `INSERT INTO user(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender, \
-        dob, profile_compvareness, photo_url, social_media_id, tagline, password, date_created, is_activated, is_first_login,\
+        dob, profile_completeness, photo_url, social_media_id, tagline, password, date_created, is_activated, is_first_login,\
         company, is_password_set) VALUES ('${user_uuid}',\
         '${first_name}', '${last_name}', '${username}','${other_name}', '${email}', '${phone_number}', '${gender}',\
-        '${dob}', '${profile_compvareness}', '${photo_url}', '${social_media_id}', '${tagline}', '${password}',\
+        '${dob}', '${profile_completeness}', '${photo_url}', '${social_media_id}', '${tagline}', '${password}',\
         '${date_created}', '${is_activated}', '${config.false}', ${company_id}, '${config.false}')`;
 
         return sql;
@@ -529,20 +529,20 @@ class User {
         return sql;
     }
 
-    getAllSettingForProfilePercentage() {
+    static getAllSettingForProfilePercentage() {
         var sql = `SELECT setting_name, setting_value AS value FROM setting WHERE setting_name LIKE '%pp%'`;
 
         return sql;
     }
 
     saveProfilePercentage(user_id, profile_percentage) {
-        var sql = `UPDATE user SET profile_compvareness = '${profile_percentage}' WHERE user_id = ${user_id}`;
+        var sql = `UPDATE user SET profile_completeness = '${profile_percentage}' WHERE user_id = ${user_id}`;
 
         return sql;
     }
 
     static getProfilePercentage(user_id) {
-        var sql = `SELECT profile_compvareness FROM user WHERE user_id = ${user_id}`;
+        var sql = `SELECT profile_completeness FROM user WHERE user_id = ${user_id}`;
 
         return sql;
     }

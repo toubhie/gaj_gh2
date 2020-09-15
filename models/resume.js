@@ -14,7 +14,7 @@ class Resume {
 
         var date_created = this.getCurrentTimeStamp();
 
-        var sql = `INSERT INTO resume(user_id, percentage_compvare, resume_file_url, date_created, \
+        var sql = `INSERT INTO resume(user_id, percentage_complete, resume_file_url, date_created, \
              profile_summary, willingness_to_travel) VALUES \
              (${user_id}, '', '', '${date_created}', '', '')`;
 

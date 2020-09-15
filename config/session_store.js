@@ -170,7 +170,7 @@ var sessionStore = {
         /*
         req.session.resume_data = {
             resume_id : resume.resume_id,
-            percentage_compvare : resume.percentage_compvare,
+            percentage_complete : resume.percentage_complete,
             resume_file_url : resume.resume_file_url,
             date_created : resume.date_created,
             profile_summary : resume.profile_summary,
@@ -193,7 +193,7 @@ var sessionStore = {
         logger.log(resumeInfoInSession)
 
         var resume_id = this.checkifUndefined(resumeInfoInSession.resume_id);
-        var percentage_compvare = this.checkifUndefined(resumeInfoInSession.percentage_compvare);
+        var percentage_complete = this.checkifUndefined(resumeInfoInSession.percentage_complete);
         var resume_file_url = this.checkifUndefined(resumeInfoInSession.resume_file_url);
         var date_created = this.checkifUndefined(resumeInfoInSession.date_created);
         var profile_summary = this.checkifUndefined(resumeInfoInSession.profile_summary);
@@ -202,7 +202,7 @@ var sessionStore = {
 
         var resumeInfo = {
             resume_id: resume_id,
-            percentage_compvare: percentage_compvare,
+            percentage_complete: percentage_complete,
             resume_file_url: resume_file_url,
             date_created: date_created,
             profile_summary: profile_summary,
@@ -634,12 +634,12 @@ var sessionStore = {
         return sortedArray;
     },
 
-    saveProfilePercentage: function(req, profile_compvareness) {
-        this.saveItem(req, config.tag_profile_compvareness, profile_compvareness);
+    saveProfilePercentage: function(req, profile_completeness) {
+        this.saveItem(req, config.tag_profile_completeness, profile_completeness);
     },
 
     getProfilePercentage: function(req) {
-        return this.getItem(req, config.tag_profile_compvareness);
+        return this.getItem(req, config.tag_profile_completeness);
     },
 
 }

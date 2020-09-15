@@ -207,7 +207,7 @@ router.post("/edit-questions", (req, res, next) => {
 
         var assessment = new Assessment();
 
-        var ifCompvared = false;
+        var ifCompleted = false;
 
         for (var i = 0; i < question_set.length; i++) {
             var question_id = question_set[i].question_id;
@@ -229,18 +229,18 @@ router.post("/edit-questions", (req, res, next) => {
                 db.query(assessment.createQuestion(assessment_id, question_no, question, question_type, option_a,
                     option_b, option_c, option_d, correct_answer, score, time_to_answer, user_id), (err, data) => {
                     if (!err) {
-                        ifCompvared = true;
+                        ifCompleted = true;
                     }
                 });
             } else {
                 db.query(assessment.editQuestion(question_id, question_no, question, question_type, option_a,
                     option_b, option_c, option_d, correct_answer, score, time_to_answer), (err, data) => {
                     if (!err) {
-                        ifCompvared = true;
+                        ifCompleted = true;
                     }
                 });
             }
-            logger.log('ifCompvared - ' + ifCompvared)
+            logger.log('ifCompleted - ' + ifCompleted)
         }
 
         res.status(200).json({

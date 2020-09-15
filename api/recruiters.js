@@ -1084,7 +1084,7 @@ router.post("/add", (req, res, next) => {
         var other_name = '';
         var gender = '';
         var dob = '';
-        var profile_compvareness = '';
+        var profile_completeness = '';
         var tagline = '';
 
         db.query(User.checkIfEmailExist(email), (err, data) => {
@@ -1099,7 +1099,7 @@ router.post("/add", (req, res, next) => {
                     var is_activated = config.not_activated;
 
                     db.query(user.createUserQuery(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender,
-                        dob, profile_compvareness, photo_url, social_media_id, tagline, password, is_activated), (err, data) => {
+                        dob, profile_completeness, photo_url, social_media_id, tagline, password, is_activated), (err, data) => {
                         if (!err) {
                             if (data) {
                                 var user_id = data.insertId;
@@ -1139,7 +1139,7 @@ router.post("/add", (req, res, next) => {
                                             if (!err) {
                                                 db.query(User.insertUserRole(user_id, config.recruiter_admin_role_tag), (err, data) => {
                                                     if (!err) {
-                                                        helpers.saveActivityTrail(user_id, "Register", "Registration Compvared.");
+                                                        helpers.saveActivityTrail(user_id, "Register", "Registration Completed.");
 
                                                         // Redirect to login authentication to load session
                                                         var redirect_link = '/auth/login?username=' + email + '&password=' + password;
@@ -1188,7 +1188,7 @@ function addTeammate(req, res, email) {
         var other_name = '';
         var gender = '';
         var dob = '';
-        var profile_compvareness = '';
+        var profile_completeness = '';
         var tagline = '';
 
         db.query(User.checkIfEmailExist(email), (err, data) => {
@@ -1209,7 +1209,7 @@ function addTeammate(req, res, email) {
 
                     var user = new User();
                     db.query(user.createTeammateQuery(user_uuid, first_name, last_name, username, other_name, email, phone_number, gender,
-                        dob, profile_compvareness, photo_url, social_media_id, tagline, password, is_activated,
+                        dob, profile_completeness, photo_url, social_media_id, tagline, password, is_activated,
                         company_id), (err, data) => {
 
                         if (!err) {
@@ -1346,7 +1346,7 @@ function updatePersonalProfile(req, res, user_id, userData) {
                         country: userData.country,
                         gender: userData.gender,
                         dob: userData.dob,
-                        profile_compvareness: userData.profile_compvareness,
+                        profile_completeness: userData.profile_completeness,
                         photo_url: userData.photo_url,
                         social_media_id: userData.social_media_id,
                         company: userData.company,
@@ -1431,7 +1431,7 @@ function updateCompanyProfile(req, res, user_id, userData) {
                         country: userData.country,
                         gender: userData.gender,
                         dob: userData.dob,
-                        profile_compvareness: userData.profile_compvareness,
+                        profile_completeness: userData.profile_completeness,
                         photo_url: userData.photo_url,
                         social_media_id: userData.social_media_id,
                         company: userData.company,
@@ -1568,7 +1568,7 @@ router.post("/upload-profile-picture", (req, res, next) => {
                             country: userData.country,
                             gender: userData.gender,
                             dob: userData.dob,
-                            profile_compvareness: userData.profile_compvareness,
+                            profile_completeness: userData.profile_completeness,
                             photo_url: full_profile_pic_url,
                             social_media_id: userData.social_media_id,
                             company: userData.company,
@@ -1606,8 +1606,8 @@ router.post("/upload-profile-picture", (req, res, next) => {
 
         form.on('progress', function(bytesReceived, bytesExpected) {
             if (bytesReceived && bytesExpected) {
-                var percent_compvare = (bytesReceived / bytesExpected) * 100;
-                logger.log(percent_compvare.toFixed(2));
+                var percent_complete = (bytesReceived / bytesExpected) * 100;
+                logger.log(percent_complete.toFixed(2));
             }
         });
     } catch (error) {

@@ -70,12 +70,12 @@ class Job {
         return sql;
     }
 
-    applyForJobQuery(job_id, user_id, cover_varter, additional_resume_url) {
+    applyForJobQuery(job_id, user_id, cover_letter, additional_resume_url) {
         job_id = this.checkifUndefined(job_id);
         user_id = this.checkifUndefined(user_id);
 
-        cover_varter = helper.escapeString(cover_varter);
-        cover_varter = this.checkifUndefined(cover_varter);
+        cover_letter = helper.escapeString(cover_letter);
+        cover_letter = this.checkifUndefined(cover_letter);
 
         additional_resume_url = this.checkifUndefined(additional_resume_url);
 
@@ -93,9 +93,9 @@ class Job {
                     application_status = config.declined;
                 } */
 
-        var sql = `INSERT INTO application (job_id, user_id, date_created, cover_varter, additional_resume_url, \
+        var sql = `INSERT INTO application (job_id, user_id, date_created, cover_letter, additional_resume_url, \
             application_status) VALUES \
-        (${job_id}, ${user_id}, '${date_created}', '${cover_varter}', '${additional_resume_url}', '${application_status}')`;
+        (${job_id}, ${user_id}, '${date_created}', '${cover_letter}', '${additional_resume_url}', '${application_status}')`;
 
         return sql;
     }

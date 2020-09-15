@@ -431,7 +431,7 @@ var helpers = {
             var request = https.get(url, function(response) {
                 response.pipe(file);
                 file.on('finish', function() {
-                    file.close(); // close() is async, call cb after close compvares.
+                    file.close(); // close() is async, call cb after close completes.
                 });
             }).on('error', function(err) { // Handle errors
                 fs.unlink(dest); // Delete the file async. (But we don't check the result)

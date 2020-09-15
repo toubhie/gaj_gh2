@@ -837,8 +837,6 @@ router.get('/settings', function(req, res) {
 
 router.post("/add", (req, res, next) => {
     try {
-        helpers.checkifAuthenticated(req, res);
-
         'use strict';
 
         //read user information from request
@@ -891,16 +889,6 @@ router.post("/add", (req, res, next) => {
                                                 var resume_id = data.insertId;
                                                 var is_first_login = config.true;
 
-                                                //Save user id
-                                                //sessionStore.saveUserId(req, user_id);  
-
-                                                //saving user data in session
-                                                //sessionStore.saveCandidateData(req, user_id, user_uuid, first_name, last_name, email, 
-                                                //    phone_number, config.candidate_role_tag, is_logged_in, is_activated, resume_id,
-                                                //    is_first_login, gender, tagline, address, photo_url);
-                                                // logger.log(req.session)
-                                                // req.session.passport.user.user_id = user_id;
-
                                                 var userData = {
                                                     user_id: user_id,
                                                     user_uuid: user_uuid,
@@ -920,11 +908,8 @@ router.post("/add", (req, res, next) => {
                                                     profile_picture: photo_url
                                                 };
 
-
-
                                                 //Save Activity Trail
                                                 helpers.saveActivityTrail(user_id, "Register", "Registration Completed.");
-
 
                                                 var resumeEducation = {};
                                                 var resumeWorkExperience = {};

@@ -118,7 +118,7 @@ router.get("/get-all-job-filters", (req, res, next) => {
 
 router.get("/get-all-states", (req, res, next) => {
     try {
-        helpers.checkifAuthenticated(req, res);
+        //helpers.checkifAuthenticated(req, res);
 
         db.query(Job.getAllStates(), (err, data) => {
             if (!err) {
@@ -257,7 +257,7 @@ router.get("/get-all-cv-search-params", (req, res, next) => {
 
 router.get("/get-all-industries", (req, res, next) => {
     try {
-        helpers.checkifAuthenticated(req, res);
+        //helpers.checkifAuthenticated(req, res);
 
         db.query(Job.getAllIndustries(), (err, data) => {
             if (!err) {
