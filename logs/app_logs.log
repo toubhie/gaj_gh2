@@ -21966,3 +21966,1676 @@
 [2020-09-15T18:29:51.777] [INFO] default - SQL: SELECT * FROM country WHERE country_id = 81
 [2020-09-15T18:31:59.453] [INFO] default - Listening on Port: 7011
 [2020-09-15T20:07:12.916] [INFO] default - Listening on Port: 7011
+[2020-09-15T20:36:57.920] [INFO] default - Listening on Port: 7011
+[2020-09-15T20:42:47.307] [INFO] default - Listening on Port: 7011
+[2020-09-15T20:43:22.174] [INFO] default - Listening on Port: 7011
+[2020-09-15T20:45:54.116] [INFO] default - Listening on Port: 7011
+[2020-09-15T20:57:37.221] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:01:00.017] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:01:11.352] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:01:11.809] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:01:11.820] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:01:11.822] [INFO] default - User exist and is redirecting
+[2020-09-15T21:01:11.832] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:01:11.836] [INFO] default - user_role -2
+[2020-09-15T21:01:11.839] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:01:11.852] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:01:11.908] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:13.200] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:13.219] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:13.223] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:13.349] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:01:13.400] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:01:13.485] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:01:13.502] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:01:13.598] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:01:13.686] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:01:15.365] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:15.432] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:01:16.242] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:16.247] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:16.268] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:01:16.285] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:01:19.544] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:19.557] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:01:20.192] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:20.225] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:01:22.325] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:22.347] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:01:22.361] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:01:22.373] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:01:22.381] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:01:22.392] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:01:22.412] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:01:22.420] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:01:22.430] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:01:22.944] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:22.958] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:01:24.943] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:24.960] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:01:25.597] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:25.624] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:01:27.165] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:27.190] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13034
+[2020-09-15T21:01:27.200] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13034
+[2020-09-15T21:01:27.206] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10934)
+[2020-09-15T21:01:27.218] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10934)
+[2020-09-15T21:01:27.221] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10934)
+[2020-09-15T21:01:27.234] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10934)
+[2020-09-15T21:01:27.237] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10934)
+[2020-09-15T21:01:27.251] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13034                 AND a.job_id = 3486
+[2020-09-15T21:01:27.804] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:01:27.808] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:01:30.653] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13034
+[2020-09-15T21:01:30.659] [INFO] default - Downloading File from Azure
+[2020-09-15T21:01:30.665] [INFO] default - Downloading file from blob
+[2020-09-15T21:01:58.094] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:02:12.012] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:02:12.017] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:02:25.673] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:02:25.831] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:02:25.833] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:02:25.834] [INFO] default - User exist and is redirecting
+[2020-09-15T21:02:25.837] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:02:25.838] [INFO] default - user_role -2
+[2020-09-15T21:02:25.839] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:02:25.843] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:02:25.857] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:26.451] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:26.456] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:26.458] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:26.461] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:02:26.484] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:02:26.486] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:02:26.495] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:02:26.499] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:02:26.504] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:02:27.862] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:27.865] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:02:28.334] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:28.340] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:28.351] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:02:28.358] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:02:29.593] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:29.604] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:02:30.160] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:30.230] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:02:31.777] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:31.781] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:02:31.784] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:02:31.792] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:02:31.795] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:02:31.797] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:02:31.800] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:02:31.804] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:02:31.811] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:02:32.357] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:32.364] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:02:33.736] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:02:33.738] [INFO] default - Downloading File from Azure
+[2020-09-15T21:02:33.740] [INFO] default - Downloading file from blob
+[2020-09-15T21:02:34.465] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:02:53.652] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:53.682] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:02:54.339] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:54.357] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:02:55.752] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:55.755] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13034
+[2020-09-15T21:02:55.758] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13034
+[2020-09-15T21:02:55.770] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10934)
+[2020-09-15T21:02:55.802] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10934)
+[2020-09-15T21:02:55.804] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10934)
+[2020-09-15T21:02:55.807] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10934)
+[2020-09-15T21:02:55.818] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10934)
+[2020-09-15T21:02:55.820] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13034                 AND a.job_id = 3486
+[2020-09-15T21:02:57.000] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:02:57.018] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:02:57.654] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13034
+[2020-09-15T21:02:57.656] [INFO] default - Downloading File from Azure
+[2020-09-15T21:02:57.659] [INFO] default - Downloading file from blob
+[2020-09-15T21:02:57.792] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:04:03.095] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:04:04.731] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:04:04.738] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:04:11.332] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:04:11.473] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:04:11.477] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:04:11.486] [INFO] default - User exist and is redirecting
+[2020-09-15T21:04:11.498] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:04:11.500] [INFO] default - user_role -2
+[2020-09-15T21:04:11.509] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:04:11.515] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:04:11.550] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:12.107] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:12.118] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:12.132] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:12.149] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:04:12.178] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:04:12.196] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:04:12.199] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:04:12.208] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:04:12.216] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:04:13.619] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:13.634] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:04:14.181] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:14.193] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:14.199] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:04:14.221] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:04:15.367] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:15.377] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:04:15.949] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:15.968] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:04:17.346] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:17.366] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13034
+[2020-09-15T21:04:17.395] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13034
+[2020-09-15T21:04:17.410] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10934)
+[2020-09-15T21:04:17.428] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10934)
+[2020-09-15T21:04:17.433] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10934)
+[2020-09-15T21:04:17.445] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10934)
+[2020-09-15T21:04:17.457] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10934)
+[2020-09-15T21:04:17.461] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13034                 AND a.job_id = 3486
+[2020-09-15T21:04:18.069] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:04:18.079] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:04:19.304] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13034
+[2020-09-15T21:04:19.309] [INFO] default - Downloading File from Azure
+[2020-09-15T21:04:19.322] [INFO] default - Downloading file from blob
+[2020-09-15T21:05:03.622] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:06:14.109] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:06:14.114] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:06:20.803] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:06:20.949] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:06:20.953] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:06:20.962] [INFO] default - User exist and is redirecting
+[2020-09-15T21:06:20.967] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:06:20.973] [INFO] default - user_role -2
+[2020-09-15T21:06:20.982] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:06:20.985] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:06:21.002] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:21.582] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:21.597] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:21.600] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:21.616] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:06:21.639] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:06:21.658] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:06:21.665] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:06:21.671] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:06:21.689] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:06:23.627] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:23.646] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:06:24.079] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:24.086] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:24.120] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:06:24.148] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:06:25.839] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:25.862] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:06:26.539] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:26.561] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:06:28.256] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:28.275] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:06:28.295] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:06:28.302] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:06:28.314] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:06:28.329] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:06:28.336] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:06:28.344] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:06:28.358] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:06:28.948] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:06:28.957] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:06:34.400] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:06:34.405] [INFO] default - Downloading File from Azure
+[2020-09-15T21:06:34.417] [INFO] default - Downloading file from blob
+[2020-09-15T21:11:41.142] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:11:44.300] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:11:44.315] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:12:04.430] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:12:04.589] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:12:04.594] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:12:04.605] [INFO] default - User exist and is redirecting
+[2020-09-15T21:12:04.609] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:12:04.616] [INFO] default - user_role -2
+[2020-09-15T21:12:04.620] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:12:04.633] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:12:04.663] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:05.241] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:05.259] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:05.262] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:05.267] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:12:05.300] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:12:05.309] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:12:05.318] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:12:05.321] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:12:05.341] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:12:07.196] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:07.227] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:12:07.693] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:07.704] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:07.723] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:12:07.734] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:12:08.695] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:08.705] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:12:09.256] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:09.269] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:12:10.190] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:10.219] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13034
+[2020-09-15T21:12:10.241] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13034
+[2020-09-15T21:12:10.250] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10934)
+[2020-09-15T21:12:10.254] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10934)
+[2020-09-15T21:12:10.268] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10934)
+[2020-09-15T21:12:10.272] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10934)
+[2020-09-15T21:12:10.287] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10934)
+[2020-09-15T21:12:10.290] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13034                 AND a.job_id = 3486
+[2020-09-15T21:12:10.814] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:12:10.826] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:12:11.767] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13034
+[2020-09-15T21:12:11.771] [INFO] default - Downloading File from Azure
+[2020-09-15T21:12:11.783] [INFO] default - Downloading file from blob
+[2020-09-15T21:12:11.861] [INFO] default - An error occured while downloading a file. Error: ENOENT: no such file or directory, open 'C:\xampp\htdocs\getajobgh\assets\temp\docs\resumes\cv.docx'
+[2020-09-15T21:12:12.475] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:13:04.015] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:13:16.468] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:13:16.474] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:13:23.192] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:13:23.334] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:13:23.338] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:13:23.347] [INFO] default - User exist and is redirecting
+[2020-09-15T21:13:23.351] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:13:23.358] [INFO] default - user_role -2
+[2020-09-15T21:13:23.363] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:13:23.376] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:13:23.400] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:23.999] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:24.005] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:24.014] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:24.025] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:13:24.062] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:13:24.071] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:13:24.079] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:13:24.087] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:13:24.105] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:13:25.560] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:25.587] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:13:25.966] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:25.983] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:25.992] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:13:26.002] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:13:27.328] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:27.342] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:13:27.794] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:27.818] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:13:28.961] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:28.980] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13034
+[2020-09-15T21:13:28.983] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13034
+[2020-09-15T21:13:29.012] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10934)
+[2020-09-15T21:13:29.015] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10934)
+[2020-09-15T21:13:29.028] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10934)
+[2020-09-15T21:13:29.031] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10934)
+[2020-09-15T21:13:29.043] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10934)
+[2020-09-15T21:13:29.046] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13034                 AND a.job_id = 3486
+[2020-09-15T21:13:29.580] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:13:29.588] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:13:30.917] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13034
+[2020-09-15T21:13:30.922] [INFO] default - Downloading File from Azure
+[2020-09-15T21:13:30.935] [INFO] default - Downloading file from blob
+[2020-09-15T21:13:31.751] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:14:25.383] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:14:25.435] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:14:25.931] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:14:25.952] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:14:27.342] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:14:27.365] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:14:27.368] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:14:27.377] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:14:27.393] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:14:27.397] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:14:27.413] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:14:27.416] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:14:27.430] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:14:27.972] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:14:27.980] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:14:29.016] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:14:29.021] [INFO] default - Downloading File from Azure
+[2020-09-15T21:14:29.030] [INFO] default - Downloading file from blob
+[2020-09-15T21:14:29.172] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:16:29.018] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:16:29.022] [INFO] default - Downloading File from Azure
+[2020-09-15T21:16:29.022] [INFO] default - Downloading file from blob
+[2020-09-15T21:16:29.157] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:19:55.725] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:19:55.754] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:19:55.764] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:19:55.781] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:19:55.846] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:19:55.862] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:19:55.881] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:19:55.911] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:19:55.914] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:19:57.301] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:19:57.308] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:19:59.164] [INFO] default - SQL: SELECT j.job_id, j.job_name, c.company_name, c.company_logo_url,                     co.country_name, s.state_name, jc.job_category_name, jt.job_type_name                     FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     WHERE j.application_deadline >= CURDATE()                     ORDER BY j.date_created DESC LIMIT 10
+[2020-09-15T21:20:06.848] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('t@yahoo.com') AND u.user_id = ur.user_id
+[2020-09-15T21:20:06.976] [INFO] default - SQL: SELECT u.*, ur.role_id, r.resume_id FROM user u, user_role ur, resume r             WHERE u.user_id = 13036 AND u.user_id = ur.user_id             AND u.user_id = r.user_id
+[2020-09-15T21:20:06.977] [INFO] default - This is user id serializwd -----13036
+[2020-09-15T21:20:06.978] [INFO] default - User exist and is redirecting
+[2020-09-15T21:20:06.981] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13036
+[2020-09-15T21:20:06.982] [INFO] default - user_role -1
+[2020-09-15T21:20:06.983] [INFO] default - User is a CANDIDATE. Getting all users info 
+[2020-09-15T21:20:06.986] [INFO] default - SQL: SELECT resume_id FROM resume WHERE user_id = 13036
+[2020-09-15T21:20:06.988] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:20:06.989] [INFO] default - Resume Info Saved!
+[2020-09-15T21:20:06.990] [INFO] default - resume - 
+[2020-09-15T21:20:06.991] [INFO] default - RowDataPacket {
+  resume_id: 10936,
+  user_id: 13036,
+  percentage_complete: '',
+  resume_file_url: '',
+  date_created: 2020-09-15T16:52:27.000Z,
+  date_updated: null,
+  profile_summary: 'test',
+  willingness_to_travel: '' }
+[2020-09-15T21:20:07.004] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:20:07.005] [INFO] default - education - 
+[2020-09-15T21:20:07.006] [INFO] default - [ RowDataPacket {
+    education_id: 2441,
+    user_id: '13036',
+    name_of_institution: 'j',
+    course_of_study: 'ol',
+    qualification: 1,
+    qualification_grade: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    description: null,
+    qualification_id: 1,
+    qualification_name: 'WASSCE/NECO',
+    qualification_description: 'WASSCE/NECO',
+    qualification_rank: '1' } ]
+[2020-09-15T21:20:07.008] [INFO] default - undefined
+[2020-09-15T21:20:07.008] [INFO] default - Resume Education Saved!
+[2020-09-15T21:20:07.009] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:20:07.010] [INFO] default - work_experience - 
+[2020-09-15T21:20:07.011] [INFO] default - [ RowDataPacket {
+    experience_id: 3295,
+    user_id: 13036,
+    job_title: 'Direct Sales Representative',
+    employer_name: 'GbaCard Limited',
+    employer_address: 'Accra, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    job_responsibility: '' } ]
+[2020-09-15T21:20:07.013] [INFO] default - undefined
+[2020-09-15T21:20:07.014] [INFO] default - Resume W.E Saved!
+[2020-09-15T21:20:07.015] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:07.140] [INFO] default - SQL: SELECT * FROM language WHERE language_id IN (SELECT language_id              FROM resume_language WHERE resume_id = 10936)
+[2020-09-15T21:20:07.142] [INFO] default - language - 
+[2020-09-15T21:20:07.149] [INFO] default - []
+[2020-09-15T21:20:07.151] [INFO] default - undefined
+[2020-09-15T21:20:07.155] [INFO] default - Resume Language Saved!
+[2020-09-15T21:20:07.166] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:20:07.168] [INFO] default - specialization - 
+[2020-09-15T21:20:07.169] [INFO] default - []
+[2020-09-15T21:20:07.170] [INFO] default - undefined
+[2020-09-15T21:20:07.171] [INFO] default - Resume specialization Saved!
+[2020-09-15T21:20:07.177] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:20:07.179] [INFO] default - certification - 
+[2020-09-15T21:20:07.181] [INFO] default - [ RowDataPacket {
+    certification_id: 1271,
+    certification_name: 'j',
+    certification_description: 'f',
+    date_obtained: 'January, 2020' } ]
+[2020-09-15T21:20:07.183] [INFO] default - undefined
+[2020-09-15T21:20:07.185] [INFO] default - Resume Certification Saved!
+[2020-09-15T21:20:07.191] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:20:07.192] [INFO] default - skills - 
+[2020-09-15T21:20:07.193] [INFO] default - [ RowDataPacket { label: 'Accounting', value: '2' },
+  RowDataPacket { label: 'Accounting Techniques', value: '4' } ]
+[2020-09-15T21:20:07.195] [INFO] default - undefined
+[2020-09-15T21:20:07.197] [INFO] default - Resume Skill Saved!
+[2020-09-15T21:20:07.324] [INFO] default - SQL: SELECT * FROM referee WHERE referee_id IN (SELECT referee_id              FROM resume_referee WHERE resume_id = 10936)
+[2020-09-15T21:20:07.326] [INFO] default - referee - 
+[2020-09-15T21:20:07.327] [INFO] default - []
+[2020-09-15T21:20:07.328] [INFO] default - undefined
+[2020-09-15T21:20:07.329] [INFO] default - Resume Referee Saved!
+[2020-09-15T21:20:07.354] [INFO] default - SQL: SELECT * FROM association WHERE association_id IN (SELECT association_id              FROM resume_association WHERE resume_id = 10936)
+[2020-09-15T21:20:07.355] [INFO] default - association - 
+[2020-09-15T21:20:07.356] [INFO] default - []
+[2020-09-15T21:20:07.357] [INFO] default - undefined
+[2020-09-15T21:20:07.359] [INFO] default - Resume association Saved!
+[2020-09-15T21:20:07.368] [INFO] default - SQL: SELECT * FROM project WHERE project_id IN (SELECT project_id FROM resume_project             WHERE resume_id = 10936)
+[2020-09-15T21:20:07.370] [INFO] default - project - 
+[2020-09-15T21:20:07.374] [INFO] default - []
+[2020-09-15T21:20:07.376] [INFO] default - undefined
+[2020-09-15T21:20:07.378] [INFO] default - Resume Project Saved!
+[2020-09-15T21:20:07.386] [INFO] default - SQL: SELECT * FROM award WHERE award_id IN (SELECT award_id              FROM resume_award WHERE resume_id = 10936)
+[2020-09-15T21:20:07.391] [INFO] default - award - 
+[2020-09-15T21:20:07.404] [INFO] default - []
+[2020-09-15T21:20:07.412] [INFO] default - undefined
+[2020-09-15T21:20:07.414] [INFO] default - Resume Award Saved!
+[2020-09-15T21:20:07.766] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:07.778] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:07.781] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:07.783] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:07.787] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13036 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13036) ORDER BY j.date_created DESC LIMIT 10
+[2020-09-15T21:20:07.788] [INFO] default - result from qual query is : 0
+[2020-09-15T21:20:07.793] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:20:07.795] [INFO] default - resume - 
+[2020-09-15T21:20:07.796] [INFO] default - RowDataPacket {
+  resume_id: 10936,
+  user_id: 13036,
+  percentage_complete: '',
+  resume_file_url: '',
+  date_created: 2020-09-15T16:52:27.000Z,
+  date_updated: null,
+  profile_summary: 'test',
+  willingness_to_travel: '' }
+[2020-09-15T21:20:07.803] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE user_id = 13036
+[2020-09-15T21:20:07.806] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13036 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13036))                 ORDER BY j.date_created DESC LIMIT 10
+[2020-09-15T21:20:07.807] [INFO] default - result from gender db is : 
+[2020-09-15T21:20:07.817] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:20:07.820] [INFO] default - education - 
+[2020-09-15T21:20:07.821] [INFO] default - [ RowDataPacket {
+    education_id: 2441,
+    user_id: '13036',
+    name_of_institution: 'j',
+    course_of_study: 'ol',
+    qualification: 1,
+    qualification_grade: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    description: null,
+    qualification_id: 1,
+    qualification_name: 'WASSCE/NECO',
+    qualification_description: 'WASSCE/NECO',
+    qualification_rank: '1' } ]
+[2020-09-15T21:20:07.823] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_jobs WHERE saved_by = 13036
+[2020-09-15T21:20:07.826] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:20:07.828] [INFO] default - work_experience - 
+[2020-09-15T21:20:07.830] [INFO] default - [ RowDataPacket {
+    experience_id: 3295,
+    user_id: 13036,
+    job_title: 'Direct Sales Representative',
+    employer_name: 'GbaCard Limited',
+    employer_address: 'Accra, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    job_responsibility: '' } ]
+[2020-09-15T21:20:07.836] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                     co.country_name, s.state_name, jc.job_category_name,                     jt.job_type_name, el.experience_level_name,                     (SELECT COUNT(*) FROM application a WHERE a.user_id = 13036 AND                     a.job_id = j.job_id) AS application_status
+                    FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     WHERE j.application_deadline >= CURDATE()                     AND min_qualification <= (SELECT MAX(qualification) AS user_qualification FROM education                     WHERE user_id = 13036) ORDER BY j.date_created DESC
+[2020-09-15T21:20:07.839] [INFO] default - result from qual query is : 0
+[2020-09-15T21:20:07.843] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13036                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:20:07.851] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:20:07.853] [INFO] default - certification - 
+[2020-09-15T21:20:07.854] [INFO] default - [ RowDataPacket {
+    certification_id: 1271,
+    certification_name: 'j',
+    certification_description: 'f',
+    date_obtained: 'January, 2020' } ]
+[2020-09-15T21:20:07.857] [INFO] default - SQL: SELECT j.*, c.company_name, c.company_logo_url, c.company_description,                 co.country_name, s.state_name, jc.job_category_name,                 jt.job_type_name, el.experience_level_name,                 (SELECT COUNT(*) FROM application a WHERE a.user_id = 13036 AND                 a.job_id = j.job_id) AS application_status
+                FROM job j                 INNER JOIN company c ON j.company_id = c.company_id                 INNER JOIN country co ON j.country_id = co.country_id                 INNER JOIN state s ON j.state_id = s.state_id                 INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                 INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                 INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                 WHERE j.application_deadline >= CURDATE()                 AND LOWER(j.gender_type) = LOWER("All") OR                 LOWER(j.gender_type) = LOWER((SELECT u.gender from user u where u.user_id = 13036))                 ORDER BY j.date_created DESC
+[2020-09-15T21:20:07.859] [INFO] default - result from gender db is : 
+[2020-09-15T21:20:07.864] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:20:07.866] [INFO] default - specialization - 
+[2020-09-15T21:20:07.868] [INFO] default - []
+[2020-09-15T21:20:07.870] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:20:07.872] [INFO] default - skills - 
+[2020-09-15T21:20:07.873] [INFO] default - [ RowDataPacket { label: 'Accounting', value: '2' },
+  RowDataPacket { label: 'Accounting Techniques', value: '4' } ]
+[2020-09-15T21:20:07.875] [INFO] default - TypeError: User is not a constructor
+    at Object.calculateProfilePercentage (C:/xampp/htdocs/getajobgh/config/helpers.js:177:24)
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:186:65
+    at C:/xampp/htdocs/getajobgh/db/database.js:49:13
+    at Query.<anonymous> (C:/xampp/htdocs/getajobgh/db/database.js:29:32)
+    at Query.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:502:10)
+    at Query._callback (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:468:16)
+    at Query.Sequence.end (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:139:8)
+    at Query.EofPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:123:8)
+    at Protocol._parsePacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+[2020-09-15T21:20:10.357] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:10.366] [INFO] default - { user_id: 13036,
+  user_uuid: 'd5ad8540-f773-11ea-bdbd-81bc7cb990a6',
+  first_name: 'Tobiloba',
+  last_name: 'Williams',
+  username: '',
+  other_name: '',
+  email: 't@yahoo.com',
+  phone_number: '08167439535',
+  address: null,
+  state: null,
+  country: null,
+  gender: '',
+  dob: '',
+  profile_completeness: '',
+  photo_url: 'null',
+  social_media_id: 'null',
+  company: null,
+  tagline: '',
+  industry: null,
+  password:
+   '$2a$10$rtTeItIoxLSFe/5ixy0CNe8VX.QrWGgOzFzUZj63oXR6YzNwkACVO',
+  last_login_time: null,
+  last_login_ip_address: null,
+  date_created: '2020-09-15T16:52:26.000Z',
+  is_activated: 0,
+  is_password_set: null,
+  activation_token:
+   'ced749e231046a1538d496791c6ea7c4520ebf28a26746abe2830f98a09b344aa11a5e04f620e540c046c318a0d9a565b9c954594d463098576a7f9d7aeed6e1',
+  invite_token: null,
+  is_invite_token_active: null,
+  password_reset_token: null,
+  is_password_reset_token_active: null,
+  is_first_login: 1,
+  is_deleted: null,
+  role_id: 1,
+  resume_id: 10936 }
+[2020-09-15T21:20:11.063] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:11.067] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:20:11.068] [INFO] default - resume - 
+[2020-09-15T21:20:11.068] [INFO] default - RowDataPacket {
+  resume_id: 10936,
+  user_id: 13036,
+  percentage_complete: '',
+  resume_file_url: '',
+  date_created: 2020-09-15T16:52:27.000Z,
+  date_updated: null,
+  profile_summary: 'test',
+  willingness_to_travel: '' }
+[2020-09-15T21:20:11.076] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:20:11.077] [INFO] default - education - 
+[2020-09-15T21:20:11.078] [INFO] default - [ RowDataPacket {
+    education_id: 2441,
+    user_id: '13036',
+    name_of_institution: 'j',
+    course_of_study: 'ol',
+    qualification: 1,
+    qualification_grade: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    description: null,
+    qualification_id: 1,
+    qualification_name: 'WASSCE/NECO',
+    qualification_description: 'WASSCE/NECO',
+    qualification_rank: '1' } ]
+[2020-09-15T21:20:11.103] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:20:11.104] [INFO] default - work_experience - 
+[2020-09-15T21:20:11.105] [INFO] default - [ RowDataPacket {
+    experience_id: 3295,
+    user_id: 13036,
+    job_title: 'Direct Sales Representative',
+    employer_name: 'GbaCard Limited',
+    employer_address: 'Accra, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    job_responsibility: '' } ]
+[2020-09-15T21:20:11.111] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:20:11.112] [INFO] default - certification - 
+[2020-09-15T21:20:11.113] [INFO] default - [ RowDataPacket {
+    certification_id: 1271,
+    certification_name: 'j',
+    certification_description: 'f',
+    date_obtained: 'January, 2020' } ]
+[2020-09-15T21:20:11.116] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:20:11.116] [INFO] default - specialization - 
+[2020-09-15T21:20:11.117] [INFO] default - []
+[2020-09-15T21:20:11.119] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:20:11.120] [INFO] default - skills - 
+[2020-09-15T21:20:11.121] [INFO] default - [ RowDataPacket { label: 'Accounting', value: '2' },
+  RowDataPacket { label: 'Accounting Techniques', value: '4' } ]
+[2020-09-15T21:20:11.122] [INFO] default - TypeError: User is not a constructor
+    at Object.calculateProfilePercentage (C:/xampp/htdocs/getajobgh/config/helpers.js:177:24)
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:186:65
+    at C:/xampp/htdocs/getajobgh/db/database.js:49:13
+    at Query.<anonymous> (C:/xampp/htdocs/getajobgh/db/database.js:29:32)
+    at Query.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:502:10)
+    at Query._callback (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:468:16)
+    at Query.Sequence.end (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:139:8)
+    at Query.EofPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:123:8)
+    at Protocol._parsePacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+[2020-09-15T21:20:11.172] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:11.181] [INFO] default - SQL: SELECT profile_completeness FROM user WHERE user_id = 13036
+[2020-09-15T21:20:11.183] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:11.187] [INFO] default - SQL: SELECT * FROM state
+[2020-09-15T21:20:11.190] [INFO] default - SQL: SELECT * FROM qualification
+[2020-09-15T21:20:11.198] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:11.201] [INFO] default - SQL: SELECT * FROM state
+[2020-09-15T21:20:11.204] [INFO] default - SQL: SELECT * FROM job_type
+[2020-09-15T21:20:11.210] [INFO] default - SQL: SELECT * FROM job_category
+[2020-09-15T21:20:11.215] [INFO] default - SQL: SELECT * FROM industry
+[2020-09-15T21:20:11.218] [INFO] default - SQL: SELECT * FROM qualification
+[2020-09-15T21:20:11.221] [INFO] default - SQL: SELECT * FROM experience_level
+[2020-09-15T21:20:11.223] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill
+[2020-09-15T21:20:11.227] [INFO] default - SQL: SELECT param_name AS label, value FROM shortlist_params
+[2020-09-15T21:20:11.229] [INFO] default - SQL: SELECT * FROM country WHERE country_id = 81
+[2020-09-15T21:20:24.790] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:24.797] [INFO] default - 100.00
+[2020-09-15T21:20:24.806] [INFO] default - ##### fields #####
+[2020-09-15T21:20:24.812] [INFO] default - { resume_id: '10936' }
+[2020-09-15T21:20:24.814] [INFO] default - ##### files #####
+[2020-09-15T21:20:24.814] [INFO] default - { resume:
+   File {
+     domain: null,
+     _events: [Object: null prototype] {},
+     _eventsCount: 0,
+     _maxListeners: undefined,
+     size: 40209,
+     path:
+      'C:\\Users\\TOBILO~1.WIL\\AppData\\Local\\Temp\\upload_63e5ccf33ece28b02ad5189c8bb8dee2',
+     name: 'TOBILOBA_WILLIAMS_JAMES_CV.docx',
+     type:
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+     hash: null,
+     lastModifiedDate: 2020-09-15T20:20:24.805Z,
+     _writeStream:
+      WriteStream {
+        _writableState: [WritableState],
+        writable: false,
+        domain: null,
+        _events: [Object: null prototype] {},
+        _eventsCount: 0,
+        _maxListeners: undefined,
+        path:
+         'C:\\Users\\TOBILO~1.WIL\\AppData\\Local\\Temp\\upload_63e5ccf33ece28b02ad5189c8bb8dee2',
+        fd: null,
+        flags: 'w',
+        mode: 438,
+        start: undefined,
+        autoClose: true,
+        pos: undefined,
+        bytesWritten: 40209,
+        closed: false } } }
+[2020-09-15T21:20:25.036] [INFO] default - SQL: UPDATE resume SET resume_file_url = 'TOBILOBA_WILLIAMS_JAMES_CV.docx' WHERE resume_id = 10936                     AND user_id = 13036
+[2020-09-15T21:20:25.048] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:25.050] [INFO] default - { user_id: 13036,
+  user_uuid: 'd5ad8540-f773-11ea-bdbd-81bc7cb990a6',
+  first_name: 'Tobiloba',
+  last_name: 'Williams',
+  username: '',
+  other_name: '',
+  email: 't@yahoo.com',
+  phone_number: '08167439535',
+  address: null,
+  state: null,
+  country: null,
+  gender: '',
+  dob: '',
+  profile_completeness: '',
+  photo_url: 'null',
+  social_media_id: 'null',
+  company: null,
+  tagline: '',
+  industry: null,
+  password:
+   '$2a$10$rtTeItIoxLSFe/5ixy0CNe8VX.QrWGgOzFzUZj63oXR6YzNwkACVO',
+  last_login_time: null,
+  last_login_ip_address: null,
+  date_created: '2020-09-15T16:52:26.000Z',
+  is_activated: 0,
+  is_password_set: null,
+  activation_token:
+   'ced749e231046a1538d496791c6ea7c4520ebf28a26746abe2830f98a09b344aa11a5e04f620e540c046c318a0d9a565b9c954594d463098576a7f9d7aeed6e1',
+  invite_token: null,
+  is_invite_token_active: null,
+  password_reset_token: null,
+  is_password_reset_token_active: null,
+  is_first_login: 1,
+  is_deleted: null,
+  role_id: 1,
+  resume_id: 10936 }
+[2020-09-15T21:20:25.135] [INFO] default - SQL: INSERT INTO activity_trail(title, description, user_id, date_created) VALUES                         ('Resume Upload', 'Resume uploaded', 13036, '2020-09-15 21:20:25')
+[2020-09-15T21:20:25.137] [INFO] default - Activity_trail saved.
+[2020-09-15T21:20:26.078] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:26.080] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:20:26.081] [INFO] default - resume - 
+[2020-09-15T21:20:26.082] [INFO] default - RowDataPacket {
+  resume_id: 10936,
+  user_id: 13036,
+  percentage_complete: '',
+  resume_file_url: 'TOBILOBA_WILLIAMS_JAMES_CV.docx',
+  date_created: 2020-09-15T16:52:27.000Z,
+  date_updated: null,
+  profile_summary: 'test',
+  willingness_to_travel: '' }
+[2020-09-15T21:20:26.179] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:26.185] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:26.188] [INFO] default - SQL: SELECT profile_completeness FROM user WHERE user_id = 13036
+[2020-09-15T21:20:26.193] [INFO] default - SQL: SELECT * FROM state
+[2020-09-15T21:20:26.235] [INFO] default - SQL: SELECT * FROM qualification
+[2020-09-15T21:20:26.244] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:20:26.245] [INFO] default - education - 
+[2020-09-15T21:20:26.248] [INFO] default - [ RowDataPacket {
+    education_id: 2441,
+    user_id: '13036',
+    name_of_institution: 'j',
+    course_of_study: 'ol',
+    qualification: 1,
+    qualification_grade: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    description: null,
+    qualification_id: 1,
+    qualification_name: 'WASSCE/NECO',
+    qualification_description: 'WASSCE/NECO',
+    qualification_rank: '1' } ]
+[2020-09-15T21:20:26.295] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:20:26.298] [INFO] default - work_experience - 
+[2020-09-15T21:20:26.303] [INFO] default - [ RowDataPacket {
+    experience_id: 3295,
+    user_id: 13036,
+    job_title: 'Direct Sales Representative',
+    employer_name: 'GbaCard Limited',
+    employer_address: 'Accra, Ghana',
+    monthly_salary: null,
+    job_type: null,
+    job_level: null,
+    start_date: 'January, 2020',
+    end_date: 'January, 2020',
+    job_responsibility: '' } ]
+[2020-09-15T21:20:26.326] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:20:26.328] [INFO] default - certification - 
+[2020-09-15T21:20:26.330] [INFO] default - [ RowDataPacket {
+    certification_id: 1271,
+    certification_name: 'j',
+    certification_description: 'f',
+    date_obtained: 'January, 2020' } ]
+[2020-09-15T21:20:26.340] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:20:26.344] [INFO] default - specialization - 
+[2020-09-15T21:20:26.351] [INFO] default - []
+[2020-09-15T21:20:26.420] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:20:26.423] [INFO] default - skills - 
+[2020-09-15T21:20:26.427] [INFO] default - [ RowDataPacket { label: 'Accounting', value: '2' },
+  RowDataPacket { label: 'Accounting Techniques', value: '4' } ]
+[2020-09-15T21:20:26.435] [INFO] default - TypeError: User is not a constructor
+    at Object.calculateProfilePercentage (C:/xampp/htdocs/getajobgh/config/helpers.js:177:24)
+    at C:/xampp/htdocs/getajobgh/api/candidates.js:186:65
+    at C:/xampp/htdocs/getajobgh/db/database.js:49:13
+    at Query.<anonymous> (C:/xampp/htdocs/getajobgh/db/database.js:29:32)
+    at Query.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:502:10)
+    at Query._callback (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\Connection.js:468:16)
+    at Query.Sequence.end (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Sequence.js:83:24)
+    at Query._handleFinalResultPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:139:8)
+    at Query.EofPacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\sequences\Query.js:123:8)
+    at Protocol._parsePacket (C:\xampp\htdocs\getajobgh\node_modules\mysql\lib\protocol\Protocol.js:278:23)
+[2020-09-15T21:20:26.586] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:20:26.590] [INFO] default - SQL: SELECT * FROM state
+[2020-09-15T21:20:26.596] [INFO] default - SQL: SELECT * FROM job_type
+[2020-09-15T21:20:26.598] [INFO] default - SQL: SELECT * FROM job_category
+[2020-09-15T21:20:26.601] [INFO] default - SQL: SELECT * FROM industry
+[2020-09-15T21:20:26.604] [INFO] default - SQL: SELECT * FROM qualification
+[2020-09-15T21:20:26.876] [INFO] default - SQL: SELECT * FROM experience_level
+[2020-09-15T21:20:26.882] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill
+[2020-09-15T21:20:26.900] [INFO] default - SQL: SELECT param_name AS label, value FROM shortlist_params
+[2020-09-15T21:20:26.917] [INFO] default - SQL: SELECT * FROM country WHERE country_id = 81
+[2020-09-15T21:23:15.909] [INFO] default - SQL: SELECT j.job_id, j.job_name, c.company_name, c.company_logo_url,                     co.country_name, s.state_name, jc.job_category_name, jt.job_type_name                     FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     WHERE j.application_deadline >= CURDATE()                     ORDER BY j.date_created DESC LIMIT 10
+[2020-09-15T21:23:43.381] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:23:43.577] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:23:43.581] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:23:43.590] [INFO] default - User exist and is redirecting
+[2020-09-15T21:23:43.598] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:23:43.604] [INFO] default - user_role -2
+[2020-09-15T21:23:43.608] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:23:43.622] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:23:43.892] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:46.194] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:46.206] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:23:46.375] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:46.401] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:46.444] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:23:46.596] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:23:46.601] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:23:46.605] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:23:46.611] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:23:49.796] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:49.818] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:23:50.648] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:50.666] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:50.671] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:23:50.689] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:23:54.074] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:54.087] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:23:54.947] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:54.969] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:23:59.102] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:23:59.179] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:23:59.195] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:23:59.208] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:23:59.255] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:23:59.278] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:23:59.294] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:23:59.316] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:23:59.373] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:24:00.804] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:24:00.825] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:24:01.707] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:24:01.724] [INFO] default - Downloading File from Azure
+[2020-09-15T21:24:01.737] [INFO] default - Downloading file from blob
+[2020-09-15T21:24:02.533] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:26:01.714] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:26:01.728] [INFO] default - Downloading File from Azure
+[2020-09-15T21:26:01.736] [INFO] default - Downloading file from blob
+[2020-09-15T21:26:01.928] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:42:10.177] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:42:10.199] [INFO] default - Downloading File from Azure
+[2020-09-15T21:42:10.203] [INFO] default - Downloading file from blob
+[2020-09-15T21:42:11.000] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:53:41.103] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:53:41.317] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:53:41.323] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:53:41.327] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:53:41.337] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:53:41.344] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:53:41.356] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:53:41.458] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:53:41.482] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:54:27.211] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:54:34.704] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:54:34.711] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:54:42.910] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:54:43.213] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:54:43.219] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:54:43.227] [INFO] default - User exist and is redirecting
+[2020-09-15T21:54:43.232] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:54:43.240] [INFO] default - user_role -2
+[2020-09-15T21:54:43.250] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:54:43.255] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:54:43.299] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:54:43.867] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:54:43.885] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:54:43.890] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:54:43.902] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:54:43.941] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:54:43.950] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:54:43.979] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:54:43.994] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:54:44.011] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:54:59.322] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:54:59.353] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:55:00.151] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:55:00.174] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:55:00.184] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:55:00.197] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:55:01.281] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:55:01.300] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:55:01.863] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:55:01.895] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:55:03.450] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:55:03.478] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:55:03.498] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:55:03.529] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:55:03.550] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:55:03.591] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:55:03.609] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:55:03.620] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:55:03.645] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:55:04.507] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:55:04.521] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:55:05.620] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:55:05.627] [INFO] default - Downloading File from Azure
+[2020-09-15T21:55:05.640] [INFO] default - Downloading file from blob
+[2020-09-15T21:55:05.644] [INFO] default - FileName to find - TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T21:55:06.745] [INFO] default - An error occured while downloading a file. StorageError: NotFound
+[2020-09-15T21:56:51.418] [INFO] default - Listening on Port: 7011
+[2020-09-15T21:56:54.783] [INFO] default - user is not authenticated..back to login
+[2020-09-15T21:56:54.790] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T21:57:10.155] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T21:57:10.403] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T21:57:10.416] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T21:57:10.420] [INFO] default - User exist and is redirecting
+[2020-09-15T21:57:10.427] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T21:57:10.430] [INFO] default - user_role -2
+[2020-09-15T21:57:10.438] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T21:57:10.452] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T21:57:10.480] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:11.414] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:11.436] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:11.448] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:11.455] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T21:57:11.529] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T21:57:11.548] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T21:57:11.575] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T21:57:11.594] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T21:57:11.600] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T21:57:12.859] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:12.888] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T21:57:13.493] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:13.507] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:13.534] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:57:13.560] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T21:57:14.998] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:15.047] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T21:57:15.514] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:15.537] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T21:57:17.203] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:17.256] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T21:57:17.264] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T21:57:17.276] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T21:57:17.293] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T21:57:17.311] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T21:57:17.330] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T21:57:17.363] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T21:57:17.376] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T21:57:18.003] [INFO] default - user is already authenticated..proceed
+[2020-09-15T21:57:18.045] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T21:57:25.911] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T21:57:25.916] [INFO] default - Downloading File from Azure
+[2020-09-15T21:57:25.932] [INFO] default - Downloading file from blob
+[2020-09-15T21:57:25.934] [INFO] default - FileName to find - TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:05:19.055] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:05:27.216] [INFO] default - user is not authenticated..back to login
+[2020-09-15T22:05:27.226] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T22:05:35.698] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T22:05:35.983] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T22:05:35.988] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T22:05:36.001] [INFO] default - User exist and is redirecting
+[2020-09-15T22:05:36.005] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T22:05:36.012] [INFO] default - user_role -2
+[2020-09-15T22:05:36.023] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T22:05:36.033] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T22:05:36.087] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:36.577] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:36.591] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:36.598] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:36.626] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T22:05:36.667] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T22:05:36.704] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T22:05:36.716] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T22:05:36.727] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T22:05:36.749] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T22:05:42.512] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:42.551] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T22:05:43.205] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:43.216] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:43.244] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T22:05:43.265] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:05:44.215] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:44.262] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T22:05:44.737] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:44.752] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:05:46.173] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:46.216] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T22:05:46.233] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T22:05:46.277] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T22:05:46.290] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T22:05:46.298] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T22:05:46.317] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T22:05:46.329] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T22:05:46.345] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T22:05:46.945] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:05:46.972] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T22:05:47.565] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T22:05:47.577] [INFO] default - Downloading File from Azure
+[2020-09-15T22:05:47.600] [INFO] default - Downloading file from blob
+[2020-09-15T22:05:47.609] [INFO] default - FileName to find - TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:05:48.652] [INFO] default - File downloaded successfully. C:\xampp\htdocs\getajobgh/assets/temp/TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:05:48.690] [INFO] default - An error occured while downloading a file. null
+[2020-09-15T22:06:59.895] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:07:13.776] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:08:04.009] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:08:08.628] [INFO] default - user is not authenticated..back to login
+[2020-09-15T22:08:08.636] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T22:08:26.802] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T22:08:27.093] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T22:08:27.100] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T22:08:27.108] [INFO] default - User exist and is redirecting
+[2020-09-15T22:08:27.114] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T22:08:27.119] [INFO] default - user_role -2
+[2020-09-15T22:08:27.126] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T22:08:27.141] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T22:08:27.195] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:28.013] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:28.034] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:28.043] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:28.059] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T22:08:28.108] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T22:08:28.122] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T22:08:28.156] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T22:08:28.192] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T22:08:28.202] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T22:08:33.715] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:33.744] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T22:08:34.330] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:34.340] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:34.369] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T22:08:34.385] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:08:36.148] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:36.181] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T22:08:36.681] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:36.727] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:08:38.524] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:38.538] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T22:08:38.639] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T22:08:38.683] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T22:08:38.708] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T22:08:38.714] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T22:08:38.723] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T22:08:38.733] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T22:08:38.741] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T22:08:39.265] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:08:39.276] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T22:08:41.414] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T22:08:41.426] [INFO] default - Downloading File from Azure
+[2020-09-15T22:08:41.437] [INFO] default - Downloading file from blob
+[2020-09-15T22:08:41.444] [INFO] default - FileName to find - TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:36:52.151] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:37:55.254] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:40:35.190] [INFO] default - user is not authenticated..back to login
+[2020-09-15T22:40:35.196] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T22:40:41.868] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T22:40:42.055] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T22:40:42.065] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T22:40:42.073] [INFO] default - User exist and is redirecting
+[2020-09-15T22:40:42.085] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T22:40:42.086] [INFO] default - user_role -2
+[2020-09-15T22:40:42.088] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T22:40:42.099] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T22:40:42.117] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:42.544] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:42.556] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:42.561] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:42.565] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T22:40:42.583] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T22:40:42.590] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T22:40:42.603] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T22:40:42.611] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T22:40:42.630] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T22:40:45.134] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:45.152] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T22:40:45.707] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:45.714] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:45.727] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:40:45.740] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T22:40:49.279] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:49.311] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T22:40:49.699] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:49.709] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:40:51.917] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:51.946] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T22:40:51.974] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T22:40:51.994] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T22:40:52.007] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T22:40:52.023] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T22:40:52.027] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T22:40:52.053] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T22:40:52.068] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T22:40:52.526] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:40:52.535] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T22:40:57.185] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T22:40:57.187] [INFO] default - Downloading File from Azure
+[2020-09-15T22:40:58.074] [INFO] default - File downloaded successfully. C:\xampp\htdocs\getajobgh/assets/temp/TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:40:58.076] [INFO] default - ReferenceError: res is not defined
+    at AzureHelper.handlePostBlobDownload (C:/xampp/htdocs/getajobgh/config/azure_helpers.js:243:13)
+    at C:/xampp/htdocs/getajobgh/config/azure_helpers.js:229:34
+    at C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.node.js:468:7
+    at finalCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.core.js:5721:7)
+    at C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:1016:11
+    at processResponseCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.core.js:5724:5)
+    at processResponseCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:329:13)
+    at WriteStream.<anonymous> (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:470:17)
+    at WriteStream.emit (events.js:198:13)
+    at WriteStream.EventEmitter.emit (domain.js:448:20)
+[2020-09-15T22:41:48.608] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:41:53.729] [INFO] default - user is not authenticated..back to login
+[2020-09-15T22:41:53.736] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T22:43:57.148] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T22:43:57.307] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T22:43:57.311] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T22:43:57.320] [INFO] default - User exist and is redirecting
+[2020-09-15T22:43:57.324] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T22:43:57.330] [INFO] default - user_role -2
+[2020-09-15T22:43:57.342] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T22:43:57.347] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T22:43:57.371] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:43:57.950] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:43:57.965] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:43:57.979] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:43:57.987] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T22:43:58.024] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T22:43:58.032] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T22:43:58.043] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T22:43:58.056] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T22:43:58.060] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T22:44:01.500] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:01.523] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T22:44:01.927] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:01.940] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:01.953] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T22:44:01.991] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:44:04.692] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:04.712] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T22:44:05.072] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:05.098] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:44:07.544] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:07.570] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T22:44:07.584] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T22:44:07.609] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T22:44:07.626] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T22:44:07.635] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T22:44:07.638] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T22:44:07.651] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T22:44:07.667] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T22:44:08.084] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:44:08.102] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T22:44:10.377] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T22:44:10.381] [INFO] default - Downloading File from Azure
+[2020-09-15T22:44:11.412] [INFO] default - File downloaded successfully. C:\xampp\htdocs\getajobgh/assets/temp/TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:44:11.418] [INFO] default - TypeError: filename must be a string
+    at createparams (C:\xampp\htdocs\getajobgh\node_modules\content-disposition\index.js:163:11)
+    at contentDisposition (C:\xampp\htdocs\getajobgh\node_modules\content-disposition\index.js:140:16)
+    at ServerResponse.download (C:\xampp\htdocs\getajobgh\node_modules\express\lib\response.js:547:28)
+    at AzureHelper.handlePostBlobDownload (C:/xampp/htdocs/getajobgh/config/azure_helpers.js:243:17)
+    at C:/xampp/htdocs/getajobgh/config/azure_helpers.js:229:34
+    at C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.node.js:468:7
+    at finalCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.core.js:5721:7)
+    at C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:1016:11
+    at processResponseCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.core.js:5724:5)
+    at processResponseCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:329:13)
+[2020-09-15T22:46:10.384] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T22:46:10.386] [INFO] default - Downloading File from Azure
+[2020-09-15T22:46:10.672] [INFO] default - File downloaded successfully. C:\xampp\htdocs\getajobgh/assets/temp/TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:46:10.675] [INFO] default - TypeError: filename must be a string
+    at createparams (C:\xampp\htdocs\getajobgh\node_modules\content-disposition\index.js:163:11)
+    at contentDisposition (C:\xampp\htdocs\getajobgh\node_modules\content-disposition\index.js:140:16)
+    at ServerResponse.download (C:\xampp\htdocs\getajobgh\node_modules\express\lib\response.js:547:28)
+    at AzureHelper.handlePostBlobDownload (C:/xampp/htdocs/getajobgh/config/azure_helpers.js:243:17)
+    at C:/xampp/htdocs/getajobgh/config/azure_helpers.js:229:34
+    at C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.node.js:468:7
+    at finalCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.core.js:5721:7)
+    at C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:1016:11
+    at processResponseCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\services\blob\blobservice.core.js:5724:5)
+    at processResponseCallback (C:\xampp\htdocs\getajobgh\node_modules\azure-storage\lib\common\services\storageserviceclient.js:329:13)
+[2020-09-15T22:53:30.524] [INFO] default - Listening on Port: 7011
+[2020-09-15T22:54:38.678] [INFO] default - user is not authenticated..back to login
+[2020-09-15T22:54:38.685] [INFO] default - TypeError: Cannot read property 'user' of undefined
+    at C:/xampp/htdocs/getajobgh/api/recruiters.js:793:45
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\layer.js:95:5)
+    at C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:281:22
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\xampp\htdocs\getajobgh\node_modules\express\lib\router\index.js:275:10)
+[2020-09-15T22:54:49.567] [INFO] default - SQL: SELECT u.user_id, u.first_name, u.last_name, u.password, ur.role_id FROM             user u, user_role ur WHERE LOWER(email) = LOWER('tobiloba.williams@c-ileasing.com') AND u.user_id = ur.user_id
+[2020-09-15T22:54:49.753] [INFO] default - SQL: SELECT u.*, ur.role_id, c.company_id, c.company_name FROM             user u, user_role ur, company c WHERE u.user_id = 13032             AND u.user_id = ur.user_id AND u.company = c.company_id
+[2020-09-15T22:54:49.756] [INFO] default - This is user id serializwd -----13032
+[2020-09-15T22:54:49.760] [INFO] default - User exist and is redirecting
+[2020-09-15T22:54:49.763] [INFO] default - SQL: SELECT role_id FROM user_role WHERE user_id = 13032
+[2020-09-15T22:54:49.764] [INFO] default - user_role -2
+[2020-09-15T22:54:49.765] [INFO] default - User is a RECRUITER ADMIN. Getting all info 
+[2020-09-15T22:54:49.767] [INFO] default - SQL: SELECT * FROM company WHERE created_by = 13032
+[2020-09-15T22:54:49.786] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:50.126] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:50.132] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:50.153] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:50.161] [INFO] default - SQL: SELECT j.*, c.company_name, co.country_name, s.state_name, jc.job_category_name, 
+                jt.job_type_name, el.experience_level_name, 
+                (SELECT COUNT(*) FROM application a WHERE a.job_id = j.job_id) AS no_of_applications 
+                FROM job j 
+                INNER JOIN company c ON j.company_id = c.company_id 
+                INNER JOIN country co ON j.country_id = co.country_id 
+                INNER JOIN state s ON j.state_id = s.state_id 
+                INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id 
+                INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id 
+                INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id 
+                WHERE is_deleted = '0' AND posted_by = 13032 ORDER BY j.date_created DESC LIMIT 5
+[2020-09-15T22:54:50.181] [INFO] default - SQL: SELECT * FROM activity_trail WHERE user_id = 13032                     ORDER BY date_created DESC LIMIT 7
+[2020-09-15T22:54:50.184] [INFO] default - SQL: SELECT COUNT(*) AS count FROM job WHERE posted_by = 13032                 AND is_deleted = 0
+[2020-09-15T22:54:50.191] [INFO] default - SQL: SELECT COUNT(*) AS count FROM application WHERE job_id IN (SELECT job_id FROM                 job WHERE posted_by = 13032) AND application_status = 'Shortlisted'
+[2020-09-15T22:54:50.196] [INFO] default - SQL: SELECT COUNT(*) AS count FROM saved_resumes WHERE user_id = 13032
+[2020-09-15T22:54:50.203] [INFO] default - SQL: SELECT COUNT(*) AS count FROM assessment WHERE created_by = 13032 AND                 is_deleted = 0
+[2020-09-15T22:54:54.742] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:54.760] [INFO] default - SQL: SELECT j.*, c.company_name, c.website, c.company_logo_url, c.address,                     c.company_description, co.country_name, co.country_code, s.state_name,                     jc.job_category_name, jt.job_type_name, el.experience_level_name,                     q.qualification_name AS min_qualification_name FROM job j                     INNER JOIN company c ON j.company_id = c.company_id                     INNER JOIN country co ON j.country_id = co.country_id                     INNER JOIN state s ON j.state_id = s.state_id                     INNER JOIN job_category jc ON j.job_category_id = jc.job_category_id                     INNER JOIN job_type jt ON j.job_type_id = jt.job_type_id                     INNER JOIN experience_level el ON j.experience_level_id = el.experience_level_id                     INNER JOIN qualification q ON j.min_qualification = q.qualification_id                     WHERE job_id = 3486 AND is_deleted = '0'
+[2020-09-15T22:54:55.170] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:55.177] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:55.181] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486 AND a.application_status = '1'
+[2020-09-15T22:54:55.210] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:54:57.024] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:57.038] [INFO] default - SQL: SELECT job_name FROM job WHERE job_id = 3486             AND is_deleted = '0'
+[2020-09-15T22:54:57.368] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:57.374] [INFO] default - SQL: SELECT a.*, a.date_created AS date_applied, u.*, j.* FROM application a
+                    INNER JOIN job j ON a.job_id = j.job_id 
+                    INNER JOIN user u ON a.user_id = u.user_id
+                    WHERE a.job_id = 3486
+[2020-09-15T22:54:59.868] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:54:59.890] [INFO] default - SQL: SELECT * FROM user WHERE user_id = 13036
+[2020-09-15T22:54:59.901] [INFO] default - SQL: SELECT * FROM resume WHERE user_id = 13036
+[2020-09-15T22:54:59.905] [INFO] default - SQL: SELECT e.*, q.* FROM education e INNER JOIN qualification q 
+                ON e.qualification = q.qualification_id WHERE e.education_id IN 
+                (SELECT re.education_id FROM resume_education re WHERE re.resume_id = 10936)
+[2020-09-15T22:54:59.908] [INFO] default - SQL: SELECT * FROM work_experience WHERE experience_id IN (SELECT experience_id FROM resume_work_experience             WHERE resume_id = 10936)
+[2020-09-15T22:54:59.916] [INFO] default - SQL: SELECT * FROM certification WHERE certification_id IN (SELECT certification_id             FROM resume_certification WHERE resume_id = 10936)
+[2020-09-15T22:54:59.920] [INFO] default - SQL: SELECT skill_name AS label, value FROM skill WHERE skill_id IN (SELECT skill_id              FROM resume_skill WHERE resume_id = 10936)
+[2020-09-15T22:54:59.922] [INFO] default - SQL: SELECT * FROM specialization WHERE specialization_id IN (SELECT specialization_id              FROM resume_specialization WHERE resume_id = 10936)
+[2020-09-15T22:54:59.925] [INFO] default - SQL: SELECT * FROM application a WHERE a.user_id = 13036                 AND a.job_id = 3486
+[2020-09-15T22:55:00.286] [INFO] default - user is already authenticated..proceed
+[2020-09-15T22:55:00.335] [INFO] default - SQL: SELECT * FROM application_status
+[2020-09-15T22:55:07.887] [INFO] default - SQL: SELECT r.resume_file_url FROM resume r WHERE user_id = 13036
+[2020-09-15T22:55:07.889] [INFO] default - Downloading File from Azure
+[2020-09-15T22:55:08.731] [INFO] default - File downloaded successfully. C:\xampp\htdocs\getajobgh/assets/temp/TOBILOBA_WILLIAMS_JAMES_CV.docx
+[2020-09-15T22:58:08.989] [INFO] default - Listening on Port: 7011
