@@ -2,7 +2,9 @@ var { StorageSharedKeyCredential, BlobServiceClient } = require('@azure/storage-
 var { AbortController } = require('@azure/abort-controller');
 var fs = require("fs");
 var path = require("path");
+var azure = require('azure-storage');
 
+var appRoot = require('app-root-path');
 var logger = require('./log4js');
 var config = require('./config');
 
@@ -205,6 +207,47 @@ class AzureHelper {
             console.log(`File downloaded`);
         } catch (err) {
             console.log(err);
+        }
+    }
+
+    async downloadFromBlob(res, fileName) {
+        try {
+            var blobService = azure.createBlobService(config.azure_storage_connection_string);
+            var fileNameInContainer = "docs/resumes/" + fileName;
+
+            var destinationFilePath = `${appRoot}/assets/temp/${fileName}`;
+
+            return new Promise((resolve, reject) => {
+                blobService.getBlobToLocalFile(config.azure_storage_container_name, fileNameInContainer,
+                    destinationFilePath, (error, downloadedBlob) => {
+
+                        if (!error) {
+                            logger.log(`File downloaded successfully. ${destinationFilePath}`);
+
+                            resolve(downloadedBlob);
+
+                            this.handlePostBlobDownload(res, downloadedBlob, destinationFilePath);
+                        } else {
+                            logger.log(`An error occured while downloading a file. ${error}`);
+                            reject(downloadedBlob);
+                        }
+                    });
+            });
+        } catch (error) {
+            logger.log(error);
+        }
+    }
+
+    handlePostBlobDownload(res, downloadedBlob, filePath) {
+        try {
+            res.download(filePath, function(err) {
+                //Delete file after download
+                if (!err) {
+                    fs.unlinkSync(filePath)
+                }
+            });
+        } catch (error) {
+            logger.log(error);
         }
     }
 

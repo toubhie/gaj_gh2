@@ -417,7 +417,7 @@ var helpers = {
             logger.log("Downloading File from Azure");
 
             var azureHelper = new AzureHelper();
-            azureHelper.downloadFilesFromAzure(fileName);
+            azureHelper.downloadFromBlob(res, fileName);
 
             // res.download(file);
         } catch (error) {
