@@ -9,7 +9,7 @@ var router = express.Router();
 
 router.get("/", (req, res, next) => {
     try {
-        helpers.checkifAuthenticated(req, res);
+        //helpers.checkifAuthenticated(req, res);
 
         db.query(User.getAllUsersQuery(), (err, data) => {
             if (!err) {
@@ -26,7 +26,7 @@ router.get("/", (req, res, next) => {
 
 router.post("/add", (req, res, next) => {
     try {
-        helpers.checkifAuthenticated(req, res);
+        //helpers.checkifAuthenticated(req, res);
 
         //read user information from request
         var user = new User(uuidv1(), req.body.first_name, req.body.last_name, req.body.email, req.body.password);
