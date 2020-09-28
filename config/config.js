@@ -34,7 +34,7 @@ module.exports = {
     "ap_status_not_recommended": 5,
 
     //Azure Strings
-    "azure_storage_connection_string": process.env.AZURE_STORAGE_CONNECTION_STRING,
+    "azure_storage_connection_string": process.env.AZURE_STORAGE_CONNECTION_STRING || "DefaultEndpointsProtocol=https;AccountName=cilappstorageaccount;AccountKey=icejvXX2h8y2skvKZ+bF1D9SW5ZJR2cX+e6UO6URXfb05RH8gkwMSjYn+WpNNFkOejqOEhMf3nV0z1gqbUnNFQ==;EndpointSuffix=core.windows.net",
     "azure_storage_container_name": "getajobgh",
     "docs_sub_container": "docs/",
     "images_sub_container": "images/",
